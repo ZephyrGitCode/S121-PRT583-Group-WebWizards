@@ -33,7 +33,7 @@ get("/",function($app){
    try{
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
-         $app->set_message("invoices", get_invoices($phone,$email));
+         #$app->set_message("invoices", get_invoices($phone,$email));
          $app->render(LAYOUT,"home");
       }
       else{
