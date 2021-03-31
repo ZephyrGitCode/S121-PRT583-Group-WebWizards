@@ -1,3 +1,14 @@
+<section class="quickicon">
+  <div class="footer-nav">
+    <a href="/" style="width: 85%; color: #007a87;"><span class="material-icons" style="font-size: 3rem;">home</span><p style="margin: auto; font-size: .9rem;">Home</p></a>
+    <a href="/map_main" style="width: 85%; color: #007a87;"><span class="material-icons" style="font-size: 3rem;">location_on</span><p style="margin: auto; font-size: .9rem;">Bins</p></a>
+    <a href="/leaderboard" style="width: 85%; color: #007a87;"><span class="material-icons" style="font-size: 3rem;">equalizer</span><p style="margin: auto; font-size: .9rem;">Leaderboard</p></a>
+    <a href="/all_rubbish" style="width: 85%; color: #007a87;"><span class="material-icons" style="font-size: 3rem;">auto_delete</span><p style="margin: auto; font-size: .9rem;">Waste Items</p></a>
+    <a href="/myaccount" style="width: 85%; color: #007a87;"><span class="material-icons" style="font-size: 3rem;">account_circle</span><p style="margin: auto; font-size: .9rem;">Account</p></a>
+  </div>
+</section>
+
+<!--
 <section class="footer">
   <div>
     <h2 class="font_2" style="line-height:1.4em;text-align:center;font-size:40px">Contact Us</h2>
@@ -15,4 +26,4 @@
       <input type="submit" class="btn btn-default cart" value="Send Feedback" name="Send Feedback">
     </form>
   </div>
-</section>
+</section>-->
