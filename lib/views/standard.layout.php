@@ -21,7 +21,7 @@
       require PARTIALS."/header.html.php";
     ?>
     
-    <div class="bodycontent">
+    <div class="bodycontent" style="background-color: #232d35; margin-top: -20px;">
       <div id='content'>
         <?php
           if(!empty($note)){
