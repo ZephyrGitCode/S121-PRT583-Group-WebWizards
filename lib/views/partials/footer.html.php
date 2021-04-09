@@ -1,3 +1,14 @@
+<section class="quickicon">
+  <div class="footer-nav">
+    <a href="" style="width: 85%;"><span class="material-icons" style="font-size: 2rem;">location_on</span><p style="margin: auto; font-size: .7rem;">Map</p></a>
+    <a href="" style="width: 85%;"><span class="material-icons" style="font-size: 2rem;">auto_delete</span><p style="margin: auto; font-size: .7rem;">Item Classify</p></a>
+    <a href="/" style="width: 85%;"><span class="material-icons" style="font-size: 2rem;">home</span><p style="margin: auto; font-size: .7rem;">Home</p></a>
+    <a href="/" style="width: 85%;"><span class="material-icons" style="font-size: 2rem;">equalizer</span><p style="margin: auto; font-size: .7rem;">Leaderboard</p></a>
+    <a href="<?php if ($_SESSION['userno'] != ""){echo "/myaccount/{$_SESSION['userno']}";}else{echo "/myaccount/123";}?>" style="width: 85%;"><span class="material-icons" style="font-size: 2rem;">account_circle</span><p style="margin: auto; font-size: .7rem;">Account</p></a>
+  </div>
+</section>
+
+<!--
 <section class="footer">
   <div>
     <h2 class="font_2" style="line-height:1.4em;text-align:center;font-size:40px">Contact Us</h2>
@@ -15,4 +26,4 @@
       <input type="submit" class="btn btn-default cart" value="Send Feedback" name="Send Feedback">
     </form>
   </div>
-</section>
+</section>-->

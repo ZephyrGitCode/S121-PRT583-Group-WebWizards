@@ -38,6 +38,7 @@
       </div> <!-- end content -->
     </div> <!-- end main -->
     <?php
+    require PARTIALS."/footer.html.php";
     require PARTIALS."/navscript.html.php";
     ?>
   </body>
