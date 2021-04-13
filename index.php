@@ -37,7 +37,8 @@ get("/",function($app){
          $app->render(LAYOUT,"home");
       }
       else{
-         $app->render(LAYOUT,"signin");
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"home");
       }
    }
    catch(Exception $e){

@@ -2,7 +2,7 @@
   <span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>
   <a href="/"><span><img src="https://cdn.pixabay.com/photo/2013/07/12/14/28/bin-148264_960_720.png" width="50px" height="50px"></span></a>
   <!--<h2 class="main-h2">EasyRecci</h2>-->
-  <a href="<?php if ($_SESSION['userno'] != ""){echo "/myaccount/{$_SESSION['userno']}";}else{echo "/myaccount/123";}?>"><span class="material-icons usericon">&#xe8a6</span></a>
+  <a href="<?php if ($_SESSION['userno'] != ""){echo "/myaccount/{$_SESSION['userno']}";}else{echo "/myaccount/123";}?>"><span class="material-icons usericon"style = "color: #b6b1a6;">&#xe8a6</span></a>
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     
