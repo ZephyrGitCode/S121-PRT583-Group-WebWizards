@@ -1,8 +1,8 @@
-<label for='password'>Password (At least 8 characters, one Capital letter and one number) *</label>
+<label for='password'>Password <span style="font-size:12px;color:gray;">(At least 8 characters, one Capital letter and one number)</span></label>
 <input type='password' id='password' name='password' placeholder=""/>
 <!--<meter max="4" id="password-strength-meter"></meter>-->
 <p id="password-strength-text"></p>
-<span class="showBtn btn" id="showBtn" style="margin-bottom:15px;">Reveal Password</span>
+<span class="showBtn btn" id="showBtn" style="margin-bottom:15px;color:lightblue;">Reveal Password</span>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
 
 <script>
@@ -37,10 +37,11 @@
     showBtn.onclick = function(){
         if(password.type == "password"){
             password.type = "text";
-            showBtn.textContent = "Hide";
+            showBtn.textContent = "Press to Hide";
+            password.style.color="white"
         }else{
             password.type = "password";
-            showBtn.textContent = "Show";
+            showBtn.textContent = "Press to Show";
         }
     };
 </script>

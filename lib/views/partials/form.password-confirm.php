@@ -1,2 +1,2 @@
- <label for='passw-c'>Confirm Password *</label>
+ <label for='passw-c'>Confirm Password</label>
  <input type='password' id='passw-c' name='passw-c'/>
