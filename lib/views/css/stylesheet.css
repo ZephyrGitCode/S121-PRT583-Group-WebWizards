@@ -394,7 +394,7 @@ input{
     margin-top: 1em;
   }
 
-/* Footer navigation Start CDU: foreground: #007a87 background: #211545*/
+/* footer navigation Start CDU: foreground: #007a87 background: #211545*/
 .footer-nav {
     border-top: solid grey 1px;
     background-color: #007a87;
@@ -419,7 +419,7 @@ input{
 #footertext{
     color: white;
 }
-/* Footer navigation End */
+/* footer navigation End */
 
 /* home cards */
 .card{
@@ -458,8 +458,4 @@ input{
 
 a {
     color: white;
-}
-
-.material-icons {
-    color: #007a87;
 }
