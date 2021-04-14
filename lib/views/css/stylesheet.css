@@ -378,6 +378,12 @@ input{
     border-radius: 3px 3px 0 0;
     color:#008;
   }
+
+  .nav2 {
+    display:grid;
+    grid-template-columns: auto auto;
+
+  }
   
   input{
     display:block;
@@ -414,3 +420,46 @@ input{
     color: white;
 }
 /* Footer navigation End */
+
+/* home cards */
+.card{
+    color: white;
+    width: calc(25% - 20px);
+    padding: 10px;
+    border-radius: 10px;
+    height: 100px;
+    margin: 20px auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    -webkit-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
+    -moz-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
+    box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
+}
+  
+@media screen and (max-width: 480px) {
+    .cardContainer{
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    .card {
+        width: 100%;
+        height: 25%;
+    }
+
+    .card h2{
+        text-align: center;
+    }
+    
+    .card p{
+        text-align: center;
+    }
+}
+
+a {
+    color: white;
+}
+
+.material-icons {
+    color: #007a87;
+}
