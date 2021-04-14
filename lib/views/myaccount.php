@@ -11,6 +11,7 @@
         // if user is not empty
         if(!empty($user) && $user['userNo'] == get_user_id()){
         ?>
+        <p style="text-align: center;">Your Score: <?php echo $user['score'];?></p>
         <form action='/myaccount/<?php if(!empty($user['userNo']))echo $user['userNo']?>' method='POST'>
             <input type='hidden' name='_method' value='put' />
 
@@ -41,12 +42,15 @@
 
             <input type="submit" name="" value="Save">
         </form>
+        
         <?php
         }else{
             echo "User data failed to load.";
         }
         ?>
     </div>
+    
+    
 
     <a href="<?php if ($_SESSION['userno'] != ""){echo "/change/{$_SESSION['userno']}";}else{echo "/change/123";}?>"><p><span class="material-icons" style="font-size: 20px;padding: 0 8px 0 5px;vertical-align: bottom;">&#xe8a6</span>Change Password</p></a>
     <a href="/signout"><p><span class="material-icons" style="font-size: 20px;padding: 0 8px 0 5px;vertical-align: bottom;">&#xe8a6</span>Signout</p></a>
