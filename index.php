@@ -167,6 +167,30 @@ get("/leaderboard",function($app){
 
 // End get ----------------------------------------
 // Start Post -------------------------------------
+post("/leaderboard",function($app){
+   require MODEL;
+   $app->set_message("title","CDU WasteAware Leaderboard");
+   session_start();
+   $email = $_SESSION["email"];
+   session_write_close();
+   try{
+      $is_authenticated = is_authenticated();
+      $app->set_message("list", leaderboard());
+
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"leaderboard");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"leaderboard");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->set_flash("Something wrong with the leaderboards.");
+      $app->render(LAYOUT,"home");
+   } 
+});
 post("/signup",function($app){
     require MODEL;
     try{

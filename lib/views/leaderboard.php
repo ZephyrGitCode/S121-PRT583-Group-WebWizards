@@ -32,21 +32,18 @@ if (isset($_POST["submit"])) {
     echo "
        <div class='info_card' style='background-color:purple;'>
          <h3>$row->fname&nbsp;$row->lname</h3>
-         <h4>Points: $row->points</h4>
+         <h4>Points: $row->score</h4>
          </div>
     ";
-	}
+	}else{
+    echo "
+    <div class='info_card' style='background-color:red;'>
+          <h3>User does not exist</h3>
+            <p>Your searched item may not be in our database</p>
+    </div>
 
-
-		else{
-			echo "
-      <div class='info_card' style='background-color:red;'>
-            <h3>User does not exist</h3>
-             <p>Your searched item may not be in our database</p>
-      </div>
-
-             ";
-		}
+            ";
+  }
 }
 
 //Print the list of account details
