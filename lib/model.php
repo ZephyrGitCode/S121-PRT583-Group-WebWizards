@@ -55,7 +55,7 @@ function post_feedback($userid, $title, $message){
 }
 */
 
-function sign_up($fname, $lname, $email, $phone, $password, $password_confirm){
+function sign_up($fname, $lname, $email, $studentnum, $password, $password_confirm){
    try{
       $db = get_db();
       if (validate_passwords($password, $password_confirm) != true){
@@ -63,9 +63,9 @@ function sign_up($fname, $lname, $email, $phone, $password, $password_confirm){
       }
       $salt = generate_salt();
       $password_hash = generate_password_hash($password,$salt);
-      $query = "INSERT INTO user (fname,lname,email,phone,salt,hashed_password) VALUES (?,?,?,?,?,?)";
+      $query = "INSERT INTO user (fname,lname,email,studentnum,salt,hashed_password) VALUES (?,?,?,?,?,?)";
       if($statement = $db->prepare($query)){
-        $binding = array($fname,$lname,$email,$phone,$salt,$password_hash);
+        $binding = array($fname,$lname,$email,$studentnum,$salt,$password_hash);
         if(!$statement -> execute($binding)){
            throw new Exception("Could not execute query.");
          }
@@ -95,7 +95,7 @@ function sign_in($useremail,$password){
          session_write_close();
          throw new Exception("Password incorrect. Password must contain at least 8 characters, one Capital letter and one number");
       }
-      $query = "SELECT userNo, email, phone, salt, isadmin, hashed_password FROM user WHERE email=?";
+      $query = "SELECT userNo, email, studentnum, salt, isadmin, hashed_password FROM user WHERE email=?";
       if($statement = $db->prepare($query)){
          $binding = array($useremail);
          if(!$statement -> execute($binding)){
@@ -116,8 +116,8 @@ function sign_in($useremail,$password){
             else{
                $email = $result["email"];
                $userno = $result["userNo"];
-               $phone = $result["phone"];
-               set_authenticated_session($email, $phone, $hashed_password, $userno, $isadmin);
+               $studentnum = $result["studentnum"];
+               set_authenticated_session($email, $studentnum, $hashed_password, $userno, $isadmin);
             }
          }
       }
@@ -150,13 +150,13 @@ function validate_password($password){
    }
 }
 
-function set_authenticated_session($email, $phone, $password_hash, $userno, $isadmin){
+function set_authenticated_session($email, $studentnum, $password_hash, $userno, $isadmin){
    session_start();
    // Make it a bit harder to session hijack
    session_regenerate_id(true);
    $_SESSION["userno"] = $userno;
    $_SESSION["email"] = $email;
-   $_SESSION["phone"] = $phone;
+   $_SESSION["studentnum"] = $studentnum;
    $_SESSION["isadmin"] = $isadmin;
    $_SESSION["hash"] = $password_hash;
    session_write_close();
@@ -236,7 +236,7 @@ function sign_out(){
    unset($_SESSION["email"]);
     unset($_SESSION["hash"]);
     unset($_SESSION["userno"]);
-    unset($_SESSION["phone"]);
+    unset($_SESSION["studentnum"]);
     $_SESSION = array();
     session_destroy();                     
  }
@@ -291,13 +291,13 @@ try{
  }
 }
 
-function update_details($id,$fname,$lname,$email,$phone){
+function update_details($id,$fname,$lname,$email,$studentnum){
    try{
      $db = get_db();
      if(validate_user_email($email) !== true ){
-         $query = "UPDATE user SET fname=?, lname=?, email=?, phone=? WHERE userNo=?";
+         $query = "UPDATE user SET fname=?, lname=?, email=?, studentnum=? WHERE userNo=?";
          if($statement = $db->prepare($query)){
-            $binding = array($fname,$lname,$email,$phone,$id);
+            $binding = array($fname,$lname,$email,$studentnum,$id);
             if(!$statement -> execute($binding)){
                throw new Exception("Could not execute query.");
             }else{
@@ -362,4 +362,21 @@ function get_user_name(){
       throw new Exception($e->getMessage());
    }
    return $name;	
+}
+
+function leaderboard(){
+   session_start();
+   try{
+     $db = get_db();
+     $query = "SELECT fname,lname,score FROM user ORDER BY score DESC";
+     $statement = $db->prepare($query);
+     $statement -> execute();
+     $list = $statement->fetchall(PDO::FETCH_ASSOC);
+     return $list;
+   }
+   catch(PDOException $e){
+     throw new Exception($e->getMessage());
+     return "";
+   }
+
 }

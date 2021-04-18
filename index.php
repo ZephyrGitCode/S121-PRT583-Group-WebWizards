@@ -28,12 +28,10 @@ get("/",function($app){
    $app->set_message("title","CDU Waste Aware");
    session_start();
    $email = $_SESSION["email"];
-   $phone = $_SESSION["phone"];
    session_write_close();
    try{
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
-         #$app->set_message("invoices", get_invoices($phone,$email));
          $app->render(LAYOUT,"home");
       }
       else{
@@ -141,6 +139,32 @@ get("/signout",function($app){
         $app->redirect_to("/signin");
    }   
 });
+
+get("/leaderboard",function($app){
+   require MODEL;
+   $app->set_message("title","CDU WasteAware Leaderboard");
+   session_start();
+   $email = $_SESSION["email"];
+   session_write_close();
+   try{
+      $is_authenticated = is_authenticated();
+      $app->set_message("list", leaderboard());
+
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"leaderboard");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"leaderboard");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->set_flash("Something wrong with the leaderboards.");
+      $app->render(LAYOUT,"home");
+   } 
+});
+
 // End get ----------------------------------------
 // Start Post -------------------------------------
 post("/signup",function($app){
@@ -149,15 +173,16 @@ post("/signup",function($app){
         if(!is_authenticated()){
           $fname = $app->form('fname');
           $lname = $app->form('lname');
-          $phone = $app->form('phone');
+          $studentnum = $app->form('studentnum');
           $email = $app->form('email');
           $pw = $app->form('password');
           $confirm = $app->form('passw-c');
    
-          if($fname && $lname && $email && $phone && $pw && $confirm){
+          if($fname && $email && $studentnum && $pw && $confirm){
               try{
-                sign_up($fname,$lname,$email,$phone,$pw,$confirm);
-                $app->set_flash("Welcome ".$fname.", now please sign in"); 
+                sign_up($fname,$lname,$email,$studentnum,$pw,$confirm);
+                sign_in($email,$pw);
+                $app->set_flash("Welcome ".$fname." ".$lname." to CDU WasteAware!"); 
                 $app->redirect_to("/");   
              }
              catch(Exception $e){
@@ -221,9 +246,9 @@ put("/myaccount/:id[\d]+",function($app){
          $fname = $app->form('fname');
          $lname = $app->form('lname');
          $email = $app->form('email');
-         $phone = $app->form('phone');
+         $studentnum = $app->form('studentnum');
          try{
-            update_details($id,$fname,$lname,$email,$phone);
+            update_details($id,$fname,$lname,$email,$studentnum);
             $app->set_flash("Details Successfully updated");
             $app->redirect_to("/");   
          }

@@ -6,7 +6,7 @@
 			<input type='hidden' name='_method' value='post' />
 			<?php
 				require PARTIALS."/form.name.php";
-				require PARTIALS."/form.phone.php";
+				require PARTIALS."/form.studentnum.php";
 				require PARTIALS."/form.email.php";
 				require PARTIALS."/form.password.php";
 				require PARTIALS."/form.password-confirm.php";
