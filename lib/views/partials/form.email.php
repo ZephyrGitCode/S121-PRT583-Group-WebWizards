@@ -1,4 +1,4 @@
-<label for='email'>Email</label>
+<label for='email'>Email* <span id="subtext">(student or personal, up to you)</span></label>
 <input type='text' id='email' name='email' placeholder=""/>
 <p id="emailtext"></p>
 

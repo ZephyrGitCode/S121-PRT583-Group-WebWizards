@@ -34,9 +34,9 @@
                 <span><i class="fa fa-user fa-icon" aria-hidden="true"></i></span>
             </div>
 
-            <p class="acctext">Phone:</p>
+            <p class="acctext">Student Number:</p>
             <div class="inputBox">
-                <input type="text" id="phone" name="phone" value="<?php echo $user['phone']?>" pattern="^[0-9]*$" onkeypress='return restrictAlphabets(event)' maxlength="10">
+                <input type="text" id="studentnum" name="studentnum" value="<?php echo $user['studentnum']?>" pattern="^s[0-9]*$" title="format: s123456" maxlength="7">
                 <span><i class="fa fa-user fa-icon" aria-hidden="true"></i></span>
             </div>
 
@@ -72,11 +72,13 @@
         }
     });
 
+    /* Restrict to numbers only
+    onkeypress='return restrictAlphabets(event)'
     function restrictAlphabets(e){
        var x = e.which || e.keycode;
         if((x>=48 && x<=57))
             return true;
         else
             return false;
-    }
+    }*/
 </script>
