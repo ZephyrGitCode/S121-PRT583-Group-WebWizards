@@ -523,5 +523,18 @@ td, th {
   .dropdown:hover .dropbtn {
     background-color: white;
   }
+  
+.card, .info_card{
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    -webkit-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
+    -moz-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
+    box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
+}
 
   /* Leaderboard end */
