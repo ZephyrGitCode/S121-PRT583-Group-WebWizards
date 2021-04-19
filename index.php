@@ -243,6 +243,26 @@ get("/general_waste",function($app){
    } 
 });
 
+get("/specialisedwaste",function($app){
+   require MODEL;
+   $app->set_message("title"," Specialised Waste");
+   $email = $_SESSION["email"];
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"specialisedwaste");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"specialisedwaste");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
 // End get ----------------------------------------
 // Start Post -------------------------------------
 post("/leaderboard",function($app){
