@@ -42,7 +42,7 @@ box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
             </div>
 
             <div class="card" style="background-color:rgb(224, 214, 7);">
-              <a style="color:white" href="/all_rubbish">
+              <a style="color:white" href="/waste_classification">
               <h2><span class="glyphicon glyphicon-trash"></span></h2>
               <p>Waste Classification</p></a>
             </div>
