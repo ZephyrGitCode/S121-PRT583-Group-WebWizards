@@ -25,6 +25,12 @@ function goBack() {
 
 <h2 style="text-align: center; padding: 10px;">Waste Classification</h2>
 <p style="text-align: center;">Click to see common items that belong to each group or search for a waste item:</p>
+
+<form method="post">
+<input type="text" name="search" placeholder="Search waste item..">
+<input type="submit" name="search">
+
+</form>
 <div class="input-icons">
   <section class="callaction">
     <div class="container">
@@ -42,17 +48,17 @@ function goBack() {
         <div class="col-md-12">
           <div class="cardContainer">
             <div class="card" style="background-color:#999900;">
-              <a style="color:white" href="/info"><h2><img src="lib/views/images/recyclebin1.jpg"/> <img src="lib/views/images/recyclebin2.jpg"/></h2>
+              <a style="color:white" href="/recycle_waste"><h2><img src="lib/views/images/recyclebin1.jpg"/> <img src="lib/views/images/recyclebin2.jpg"/></h2>
               <p>Paper & Cardboard Recycling</p></a>
             </div>
 
             <div class="card" style="background-color:#8B0000;">
-              <a style="color:white" href="/howtopoints"><h2><img src="lib/views/images/generalbin1.jpg"/> <img src="lib/views/images/generalbin2.jpg"/></h2>
+              <a style="color:white" href="/general_waste"><h2><img src="lib/views/images/generalbin1.jpg"/> <img src="lib/views/images/generalbin2.jpg"/></h2>
               <p>General Waste</p></a>
             </div>
 
             <div class="card" style="background-color:#4CAF50;">
-              <a style="color:white" href="/map_main"><h2><img src="lib/views/images/co-minglebin1.jpg"/> <img src="lib/views/images/co-minglebin2.jpg"/></h2>
+              <a style="color:white" href="/co-mingled_waste"><h2><img src="lib/views/images/co-minglebin1.jpg"/> <img src="lib/views/images/co-minglebin2.jpg"/></h2>
               <p>Co-mingle Recycling</p></a>
             </div>
 
