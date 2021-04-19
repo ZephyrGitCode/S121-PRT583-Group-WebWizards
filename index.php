@@ -183,6 +183,65 @@ get("/waste_classification",function($app){
       $app->render(LAYOUT,"signin");
    } 
 });
+get("/recycle_waste",function($app){
+   require MODEL;
+   $app->set_message("title","Recyclable Waste");
+   $email = $_SESSION["email"];
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"recycle_waste");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"recycle_waste");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
+get("/co-mingled_waste",function($app){
+   require MODEL;
+   $app->set_message("title","Co-mingle Recyclable Waste");
+   $email = $_SESSION["email"];
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"co-mingled_waste");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"co-mingled_waste");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
+get("/general_waste",function($app){
+   require MODEL;
+   $app->set_message("title","General Waste");
+   $email = $_SESSION["email"];
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"general_waste");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"general_waste");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
 
 // End get ----------------------------------------
 // Start Post -------------------------------------
