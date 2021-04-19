@@ -45,7 +45,6 @@
               <h3 style="color:white"><img src="lib/views/images/paperbags.jpg"/>
               Paper bags</h3><p>Make sure they do not contain food scraps/oils</p>
             </div>
-
          
         </div>
       </div>
