@@ -15,22 +15,46 @@
 }
 
 </style>
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
 
-<button style="padding-right: 10px; padding-left: 5px; padding-top:3px; padding-bottom:3px; background-color: #007a87; border: none; border-radius: 50px; " onclick="goBack()"> < Back </button>
+<a href="/home" <button style="padding-right: 10px; padding-left: 5px; padding-top:3px; padding-bottom:3px; background-color: #007a87; border: none; border-radius: 50px;"> < Back </button></a>
 
 <h2 style="text-align: center; padding: 10px;">Waste Classification</h2>
 <p style="text-align: center;">Click to see common items that belong to each group or search for a waste item:</p>
 
 <form method="post">
 <input type="text" name="search" placeholder="Search waste item..">
-<input type="submit" name="search">
+<input type="submit" name="submit">
 
 </form>
+
+<?php
+$con = get_db();
+
+if (isset($_POST["submit"])) {
+	$str = $_POST["search"];
+	$sth = $con->prepare("SELECT * FROM binitems WHERE item LIKE'%$str%'");
+
+	$sth->setFetchMode(PDO:: FETCH_OBJ);
+	$sth -> execute();
+
+  if($rows = $sth->fetchall()){
+    foreach($rows as $row){
+      echo "
+        <div class='info_card' style='background-color:purple;'>
+          <h3>$row->item belongs in $row->bintype</h3>
+          </div>";
+  }
+    
+	}else{
+    echo "
+    <div class='info_card' style='background-color:red;'>
+          <h3>User does not exist</h3>
+            <p>Your searched item may not be in our database</p>
+    </div>
+
+            ";
+  }}?>
+
 <div class="input-icons">
   <section class="callaction">
     <div class="container">

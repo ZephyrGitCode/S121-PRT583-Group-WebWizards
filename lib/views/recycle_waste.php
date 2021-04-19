@@ -10,13 +10,9 @@
 }
 </style>
 
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
 
-<button style="padding-right: 10px; padding-left: 5px; padding-top:3px; padding-bottom:3px; background-color: #007a87; border: none; border-radius: 50px; " onclick="goBack()"> < Back </button>
+
+<a href="/waste_classification" <button style="padding-right: 10px; padding-left: 5px; padding-top:3px; padding-bottom:3px; background-color: #007a87; border: none; border-radius: 50px;"> < Back </button></a>
 
 <h2 style="text-align: center; padding: 10px;">Recyclable Waste Materials</h2>
 <div class="input-icons">
