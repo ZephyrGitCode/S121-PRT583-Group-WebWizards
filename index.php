@@ -164,6 +164,104 @@ get("/leaderboard",function($app){
       $app->render(LAYOUT,"home");
    } 
 });
+get("/waste_classification",function($app){
+   require MODEL;
+   $app->set_message("title","Waste Classification");
+   $email = $_SESSION["email"];
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"waste_classification");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"waste_classification");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+get("/recycle_waste",function($app){
+   require MODEL;
+   $app->set_message("title","Recyclable Waste");
+   $email = $_SESSION["email"];
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"recycle_waste");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"recycle_waste");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
+get("/co-mingled_waste",function($app){
+   require MODEL;
+   $app->set_message("title","Co-mingle Recyclable Waste");
+   $email = $_SESSION["email"];
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"co-mingled_waste");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"co-mingled_waste");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
+get("/general_waste",function($app){
+   require MODEL;
+   $app->set_message("title","General Waste");
+   $email = $_SESSION["email"];
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"general_waste");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"general_waste");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
+get("/specialisedwaste",function($app){
+   require MODEL;
+   $app->set_message("title"," Specialised Waste");
+   $email = $_SESSION["email"];
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"specialisedwaste");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"specialisedwaste");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
 
 // End get ----------------------------------------
 // Start Post -------------------------------------
@@ -191,6 +289,35 @@ post("/leaderboard",function($app){
       $app->render(LAYOUT,"home");
    } 
 });
+
+post("/waste_classification",function($app){
+   require MODEL;
+   $app->set_message("title","Waste Classification");
+   session_start();
+   $email = $_SESSION["email"];
+   session_write_close();
+   try{
+      $is_authenticated = is_authenticated();
+      $app->set_message("list", wasteclassification());
+
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"waste_classification");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"waste_classification");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->set_flash("Something wrong with the leaderboards.");
+      $app->render(LAYOUT,"home");
+   } 
+});
+
+
+
+
 post("/signup",function($app){
     require MODEL;
     try{

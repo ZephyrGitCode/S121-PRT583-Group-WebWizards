@@ -380,3 +380,20 @@ function leaderboard(){
    }
 
 }
+
+function wasteclassification(){
+   session_start();
+   try{
+     $db = get_db();
+     $query = "SELECT * FROM binitems";
+     $statement = $db->prepare($query);
+     $statement -> execute();
+     $list = $statement->fetchall(PDO::FETCH_ASSOC);
+     return $list;
+   }
+   catch(PDOException $e){
+     throw new Exception($e->getMessage());
+     return "";
+   }
+
+}
