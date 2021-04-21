@@ -1,0 +1,8 @@
+{
+  "require": {
+    	"square/square": "8.0.0.20201216"
+  },
+    "config": {
+    	"optimize-autoloader": true
+    }
+}
