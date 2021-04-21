@@ -21,7 +21,7 @@ $con = get_db();
 
 if (isset($_POST["submit"])) {
 	$str = $_POST["search"];
-	$sth = $con->prepare("SELECT * FROM user WHERE fname = '$str'");
+	$sth = $con->prepare("SELECT * FROM user WHERE fname LIKE'%$str%'");
 
 	$sth->setFetchMode(PDO:: FETCH_OBJ);
 	$sth -> execute();

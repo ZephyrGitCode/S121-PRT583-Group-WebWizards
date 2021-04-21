@@ -1,6 +1,5 @@
 <p><?php echo $message ?></p>
 <style>
-
 .card img{
     margin-left: -10px;
     width:275px;
@@ -9,8 +8,6 @@
     padding: 10px;
 }
 </style>
-
-
 
 <a href="/waste_classification" <button style="padding-right: 10px; padding-left: 5px; padding-top:3px; padding-bottom:3px; background-color: #007a87; border: none; border-radius: 50px;"> < Back </button></a>
 
@@ -36,11 +33,11 @@
               <h3 style="color:white"><img src="lib/views/images/dish.jpg"/>
               Dish & Air Care products</h3><p>Plastic spray bottles including trigger heads, Dishwashing tablets/liquid bottles including caps, Air freshener aerosol 
               cans/plug-ins/refills, these should be disposed off at</br> Building Orange 8.</p>
-            </div>
-            <div class="card" style="background-color:#FF6347;">
+          </div>
+          <div class="card" style="background-color:#FF6347;">
             <h3 style="color:white"><img src="lib/views/images/toner-cartridges.jpg"/>
             Toner Cartridges</h3><p>Toner cartridges can be disposed off at </br> Buildings Orange 8 or Yellow 2</p>
-            </div>
+          </div>
 
             <div class="card" style="background-color:#FF6347;">
             <h3 style="color:white"><img src="lib/views/images/plastic-lids.jpg"/>

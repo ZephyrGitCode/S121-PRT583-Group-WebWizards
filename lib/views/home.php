@@ -28,17 +28,17 @@ box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
           <div class="cardContainer">
             <div class="card" style="background-color:rgb(50, 41, 91);">
               <a style="color:white" href="/info"><h2><span class="glyphicon glyphicon-info-sign"></span></h2>
-              <p>Info on Waste Management</p></a>
+              <p><span id="soon">Info on Waste Management</span></p></a>
             </div>
 
             <div class="card" style="background-color:rgb(153, 29, 2);">
               <a style="color:white" href="/howtopoints"><h2><span class="glyphicon glyphicon-star"></span></h2>
-              <p>How to earn points</p></a>
+              <p><span id="soon">How to earn points</span></p></a>
             </div>
 
             <div class="card" style="background-color:rgb(207, 41, 91);">
               <a style="color:white" href="/map_main"><h2><span class="glyphicon glyphicon-map-marker"></span></h2>
-              <p>Nearest Bins</p></a>
+              <p><span id="soon">Nearest Bins</span></p></a>
             </div>
 
             <div class="card" style="background-color:rgb(224, 214, 7);">
@@ -53,8 +53,8 @@ box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
             </div>
 
             <div class="card" style="background-color:rgb(193, 29, 2);">
-              <a style="color:white" href="/quiz"><h2><span class="glyphicon glyphicon-question-sign"></span></h2>
-              <p>Quiz</p></a>
+              <a style="color:white" href="/quiz"><span class="material-icons">flaky</span>
+              <p><span id="soon">Quiz</span></p></a>
             </div>
 
           </div>
