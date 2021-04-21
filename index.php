@@ -329,6 +329,27 @@ get("/siteinfo",function($app){
    } 
 });
 
+get("/map",function($app){
+   require MODEL;
+   $app->set_message("title","Map");
+   $email = $_SESSION["email"];
+   $id = get_user_id();
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"map");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"map");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
 // End get ----------------------------------------
 // Start Post -------------------------------------
 post("/leaderboard",function($app){

@@ -37,7 +37,7 @@ box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
             </div>
 
             <div class="card" style="background-color:rgb(207, 41, 91);">
-              <a style="color:white" href="/map_main"><h2><span class="glyphicon glyphicon-map-marker"></span></h2>
+              <a style="color:white" href="/map"><h2><span class="glyphicon glyphicon-map-marker"></span></h2>
               <p><span id="soon">Nearest Bins</span></p></a>
             </div>
 
