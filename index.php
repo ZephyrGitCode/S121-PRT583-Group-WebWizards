@@ -263,6 +263,51 @@ get("/specialisedwaste",function($app){
    } 
 });
 
+get("/games",function($app){
+   require MODEL;
+   $app->set_message("title"," Specialised Waste");
+   $email = $_SESSION["email"];
+   $id = get_user_id();
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->set_message("user", get_user($id));
+         $app->render(LAYOUT,"games");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"games");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
+get("/game/:id;[\d]+",function($app){
+   $id = $app->route_var("id");
+   $app->set_message("title","Games");
+   require MODEL;
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->set_message("user", get_user($id));
+         $app->render(LAYOUT,"game".$id);
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"game".$id);
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+   $app->set_message("note", "You must be logged in to see your account");
+   $app->render(LAYOUT,"/signin");
+});
+
 // End get ----------------------------------------
 // Start Post -------------------------------------
 post("/leaderboard",function($app){
@@ -310,7 +355,7 @@ post("/waste_classification",function($app){
    }
    catch(Exception $e){
       $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
+      $app->set_flash("Something wrong with the item search.");
       $app->render(LAYOUT,"home");
    } 
 });
