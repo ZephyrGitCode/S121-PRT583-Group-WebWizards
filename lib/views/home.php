@@ -27,7 +27,7 @@ box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
         <div class="col-md-12">
           <div class="cardContainer">
             <div class="card" style="background-color:rgb(50, 41, 91);">
-              <a style="color:white" href="/info"><h2><span class="glyphicon glyphicon-info-sign"></span></h2>
+              <a style="color:white" href="/siteinfo"><h2><span class="glyphicon glyphicon-info-sign"></span></h2>
               <p><span id="soon">Info on Waste Management</span></p></a>
             </div>
 

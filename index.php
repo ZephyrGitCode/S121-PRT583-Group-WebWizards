@@ -308,6 +308,27 @@ get("/game/:id;[\d]+",function($app){
    $app->render(LAYOUT,"/signin");
 });
 
+get("/siteinfo",function($app){
+   require MODEL;
+   $app->set_message("title","Site info");
+   $email = $_SESSION["email"];
+   $id = get_user_id();
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"siteinfo");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"siteinfo");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
 // End get ----------------------------------------
 // Start Post -------------------------------------
 post("/leaderboard",function($app){
