@@ -36,7 +36,7 @@
             </div>
 
             <div class="card" style="background-color:#4CAF50;">
-            <h3 style="color:white"><img src="lib/views/images/aluminiumcans.jpg"/>
+            <h3 style="color:white"><img src="lib/views/images/Aluminiumcans.jpg"/>
             Aluminium Cans</h3><p>Cans from soft drinks.</p>
             </div>
 
