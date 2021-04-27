@@ -2,7 +2,7 @@
 </style>
 
 <div class="dropdown">
-  <h1 class="dropbtn" id= "leaderboard_heading"> <span class="glyphicon glyphicon-chevron-down"></span> Leaderboard - 2021</h1>
+  <h1 class="dropbtn" id= "leaderboard_heading"> <span class="glyphicon glyphicon-chevron-down"></span> Yearly Leaderboard - 2021</h1>
   <div class="dropdown-content">
   <a href="/leaderboard"><h1>Yearly leaderboard</h1></a>
     <a href="/january"><h1>January</h1></a>
@@ -23,7 +23,7 @@
 <td></td>
 <form method="post">
   <input type="text" name="search" placeholder="search for user">
-  <input type="submit" name="Search">
+  <input type="submit" name="submit">
 </form>
 
 <?php
@@ -36,15 +36,15 @@ if (isset($_POST["submit"])) {
 	$sth->setFetchMode(PDO:: FETCH_OBJ);
 	$sth -> execute();
 
-	if($row = $sth->fetch())
-	{
+	if($rows = $sth->fetchall())
+	{foreach($rows as $row){
 
     echo "
        <div class='info_card' style='background-color:purple;'>
          <h3>$row->fname&nbsp;$row->lname</h3>
-         <h4>Points: $row->score</h4>
+         <h4>Points: $row->score &nbsp&nbsp&nbsp Month: $row->month</h4>
          </div>
-    ";
+    ";}
 	}else{
     echo "
     <div class='info_card' style='background-color:red;'>
