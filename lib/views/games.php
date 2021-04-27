@@ -22,7 +22,7 @@ if ($user['userNo'] == ""){
 ?>
 <h2>Select from a game below</h2>
 <div class="card" style="background-color:#FF6347;">
-  <h3 style="color:white"><img src="lib/views/images/Paper-Toss.jpg"/><a href="/game/1">Recycling Game</a></h3>
+<a href="/game/1"><h3 style="color:white"><img src="lib/views/images/Paper-Toss.jpg"/>Recycling Game</h3></a>
   <p></p>
 </div>
 

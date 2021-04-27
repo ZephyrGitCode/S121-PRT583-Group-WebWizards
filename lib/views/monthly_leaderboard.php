@@ -63,7 +63,7 @@ if(!empty($list)){
   foreach($list As $detail){
     $fname = htmlspecialchars($detail['fname'],ENT_QUOTES, 'UTF-8');
     $lname = htmlspecialchars($detail['lname'],ENT_QUOTES, 'UTF-8');
-    $points= htmlspecialchars($detail['SUM(score.score)'],ENT_QUOTES, 'UTF-8');
+    $points= htmlspecialchars($detail['score'],ENT_QUOTES, 'UTF-8');
     $year = htmlspecialchars($detail['year'],ENT_QUOTES, 'UTF-8');
     $rank++;
     if ($year == date(Y)){

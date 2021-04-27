@@ -1,5 +1,8 @@
 <p><?php echo $message ?></p>
 <style>
+.input-icons{
+  margin-top:-60px;
+}
 .card a{
     padding: 20px;
 }
@@ -13,17 +16,18 @@
     display: grid;
     grid-template-columns: auto auto;
 }
+#searchbutton{
+  visibility: hidden;
+}
 
 </style>
-
-<a href="/home" <button style="padding-right: 10px; padding-left: 5px; padding-top:3px; padding-bottom:3px; background-color: #007a87; border: none; border-radius: 50px;"> < Back </button></a>
 
 <h2 style="text-align: center; padding: 10px;">Waste Classification</h2>
 <p style="text-align: center;">Click to see common items that belong to each group or search for a waste item:</p>
 
 <form method="post">
 <input type="text" name="search" placeholder="Search waste item..">
-<input type="submit" name="submit">
+<input id="searchbutton" type="submit" name="submit">
 
 </form>
 
@@ -48,7 +52,7 @@ if (isset($_POST["submit"])) {
 	}else{
     echo "
     <div class='info_card' style='background-color:red;'>
-          <h3>User does not exist</h3>
+          <h3>Item does not exist</h3>
             <p>Your searched item may not be in our database</p>
     </div>
 
