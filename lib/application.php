@@ -205,6 +205,36 @@ class Application{
        return "GET";
     }
 
+    /* public function get_method(){
+       $request_method = "";
+       
+       if(!empty($_SERVER['REQUEST_METHOD'])){
+             $request_method = strtoupper($_SERVER['REQUEST_METHOD']);
+       }
+              
+       if($request_method === "POST"){
+	       $method = strtoupper($this->form("_method"));
+           if($method === "POST"){
+              return "POST";
+           }
+           if($method === "PUT"){
+              return "PUT";
+           }
+           if($method === "DELETE"){
+              return "DELETE";
+           }   
+           return "POST";
+       }
+       if($request_method === "PUT"){
+            return "PUT";
+       }
+
+       if($request_method === "DELETE"){
+            return "DELETE";
+       }
+       return "GET";
+    }  */
+
     public function redirect_to($path="/"){
       header("Location: {$path}");
       exit();
