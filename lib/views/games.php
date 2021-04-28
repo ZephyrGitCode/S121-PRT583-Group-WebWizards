@@ -16,7 +16,7 @@ if ($user['userNo'] == ""){
   echo "<p>Continueing as guest, <a href='/signin'>sign in</a> to earn points!</p>";
 }else{
   ?>
-  <p style="text-align: center;">Your Score: <?php echo $user['score'];?></p>
+  <p style="text-align: center;">Your Score: <?php echo $user['totalscore'];?></p>
   <?php
 }
 ?>

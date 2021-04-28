@@ -9,7 +9,7 @@
 
 
 <div class="dropdown">
-  <h1 class="dropbtn" id= "leaderboard_heading"> <span class="glyphicon glyphicon-chevron-down"></span> <?php echo"Leaderboard $month - $years"?></h1>
+  <h1 style="text-align:center;" class="dropbtn" id= "leaderboard_heading"> <span class="glyphicon glyphicon-chevron-down"></span> <?php echo"Leaderboard </br>$month - $years"?></h1>
   <div class="dropdown-content">
   <a href="/leaderboard"><h1>Yearly leaderboard</h1></a>
     <a href="/january"><h1>January</h1></a>
@@ -38,7 +38,7 @@ $con = get_db();
 
 if (isset($_POST["submit"])) {
 	$str = $_POST["search"];
-	$sth = $con->prepare("SELECT * FROM user,score WHERE user.fname=score.Username AND user.fname LIKE'%$str%'");
+	$sth = $con->prepare("SELECT * FROM USER,score WHERE user.fname=score.Username AND user.fname LIKE'alvin' AND score.month = '$month'");
 
 	$sth->setFetchMode(PDO:: FETCH_OBJ);
 	$sth -> execute();

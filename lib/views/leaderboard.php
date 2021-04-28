@@ -31,7 +31,7 @@ $con = get_db();
 
 if (isset($_POST["submit"])) {
 	$str = $_POST["search"];
-	$sth = $con->prepare("SELECT * FROM user,score WHERE user.fname=score.Username AND user.fname LIKE'%$str%'");
+	$sth = $con->prepare("SELECT *,SUM(score.score)AS totalscore FROM USER,score WHERE user.fname=score.Username AND user.fname LIKE'%$str%'");
 
 	$sth->setFetchMode(PDO:: FETCH_OBJ);
 	$sth -> execute();
@@ -42,7 +42,7 @@ if (isset($_POST["submit"])) {
     echo "
        <div class='info_card' style='background-color:purple;'>
          <h3>$row->fname&nbsp;$row->lname</h3>
-         <h4>Points: $row->score &nbsp&nbsp&nbsp Month: $row->month</h4>
+         <h4>Points: $row->totalscore</h4>
          </div>
     ";}
 	}else{
