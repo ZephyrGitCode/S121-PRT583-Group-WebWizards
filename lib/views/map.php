@@ -2,8 +2,8 @@
 
 <!--<iframe src="https://i.simmer.io/@Henrylllll/cdu-waste-management-map" style="width:350px;height:600px;border:0"></iframe>-->
 <head>
-   <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-   <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+   <link rel = "stylesheet" type="text/css" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+   <script rel = "script" src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 
 <div id="map" style = "width:100%; height:580px;color:black;"></div>
