@@ -6,26 +6,45 @@
    <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 
-<div id = "map" style = "width:900px; height:580px;"></div>
+<div id="map" style = "width:100%; height:580px;color:black;"></div>
 <div id='findme'><a href='#'>Find me!</a></div>
 <div id='centercdu'><a href='#'>CDU Center</a></div>
-
-
 
 <script>
 var map;
 function initMap() {
   map = new L.Map("map", {
-      center: new L.LatLng(-12.37, 130.8730),
+      center: new L.LatLng(-12.37206, 130.86938),
       zoom: 17,
       layers: new L.TileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png")
   });
 }
+initMap();
 
-function addMarker(lat, lng) {
-  var marker = new L.Marker(new L.LatLng(lat, lng));
-  marker.bindPopup("You are here");
-  map.addLayer(marker);
+//map.addLayer(marker);
+
+function addMarker(latlng, msg="") {
+  /*
+  // Icon options
+  var iconOptions = {
+    iconSize: [50, 50]
+  }
+  // Creating a custom icon
+  var customIcon = L.icon(iconOptions);
+  */
+  var markerOptions = {
+    title: "BinLocation",
+    clickable: true,
+    draggable: true,
+    //icon: customIcon
+  }
+  try {
+    var marker = new L.Marker(latlng,markerOptions);
+    marker.bindPopup(msg);
+    marker.addTo(map);
+  } catch (error) {
+    console.log(error)
+  }
   return marker;
 }
 
@@ -47,25 +66,17 @@ function locateCenter() {
   });
 }
 
-// Icon options
-var iconOptions = {
-    iconUrl: 'logo.png',
-    iconSize: [50, 50]
+function onMapClick(e) {
+  var msg = "Recently Clicked "+e.latlng.toString();
+  alert(msg);
+  try {
+    addMarker(e.latlng,msg);
+    sessionStorage.setItem()
+  } catch (error) {
+    console.log(error)
+  }
 }
-// Creating a custom icon
-var customIcon = L.icon(iconOptions);
-
-// Creating Marker Options
-var markerOptions = {
-    title: "MyLocation",
-    clickable: true,
-    draggable: true,
-    icon: customIcon
-}
-// Creating a Marker
-var marker = L.marker([17.438139, 78.395830], markerOptions);
-
-initMap();
+map.on('click', onMapClick);
 
 if("geolocation" in navigator)
 {
@@ -86,7 +97,66 @@ $('#findme').find('a').on('click', function() {
 });
 
 $('#centercdu').find('a').on('click', function() {
-    var loc = new L.LatLng(-12.37, 130.8730);
-    map.setView(loc, 17, { animation: true }); 
+    var loc = new L.LatLng(-12.37206, 130.86938);
+    map.setView(loc, 17, {animation: true}); 
 });
+
+//var json = JSON.parse(<?php echo stripslashes($mapmarkers); ?>);
+//console.log(json);
 </script>
+<?php
+if(!empty($mapmarkers)){
+  $n = 1;
+  ?>
+  <script>
+  localStorage.clear()
+  </script>
+  <?php
+  foreach($mapmarkers As $marker){
+    $bcolour = htmlspecialchars($marker['buildingcolour'],ENT_QUOTES, 'UTF-8');
+    $bnum = htmlspecialchars($marker['buildingnum'],ENT_QUOTES, 'UTF-8');
+    $type = htmlspecialchars($marker['type'],ENT_QUOTES, 'UTF-8');
+    $lat = htmlspecialchars($marker['lat'],ENT_QUOTES, 'UTF-8');
+    $long = htmlspecialchars($marker['long'],ENT_QUOTES, 'UTF-8');
+    ?>
+    <script>
+      //loc = $lat+", "+$long
+      //localStorage.setItem(<?php echo $n ?>,loc)
+      var lat = <?php echo $lat ?>;
+      var long = <?php echo $long ?>;
+      var bcolour = "<?php echo $bcolour ?>";
+      var bnum = "<?php echo $bnum ?>";
+      var type = "<?php echo $type ?>";
+      if (lat != ""){
+        console.log(lat+" "+long);
+        var loc = new L.LatLng(lat, long);
+        switch(type)
+        {
+          case "gw":
+            type = "General Waste"
+            break;
+          case "com":
+            type = "Co-mingled"
+            break;
+          case "cardpap":
+            type = "Carboard and Paper"
+            break;
+          case "gwcom":
+            type = "General Waste and Co-mingled"
+            break;
+          case "env":
+            type = "Enviro-collective"
+            break;
+        default:
+          type = type
+        }
+        
+        msg = bcolour+" "+bnum+" "+type;
+        addMarker(loc,msg)
+      }
+    </script>
+<?php
+    $n+=1;
+  }
+}
+?>

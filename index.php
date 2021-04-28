@@ -637,12 +637,14 @@ get("/map",function($app){
    $email = $_SESSION["email"];
    $id = get_user_id();
    try{
+      // change to isadmin?
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
+         $app->set_message("mapmarkers", mapmarkers());
          $app->render(LAYOUT,"map");
       }
       else{
-         #$app->render(LAYOUT,"signin");
+         $app->set_message("mapmarkers", mapmarkers());
          $app->render(LAYOUT,"map");
       }
    }

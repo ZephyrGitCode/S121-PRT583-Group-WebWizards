@@ -66,7 +66,7 @@ if(!empty($list)){
     $points= htmlspecialchars($detail['SUM(score.score)'],ENT_QUOTES, 'UTF-8');
     $year = htmlspecialchars($detail['year'],ENT_QUOTES, 'UTF-8');
     $rank++;
-    if ($year == date(Y)){
+    if ($year == date("Y")){
     if ($rank == 1){
      echo "<tr class = 'top_three'>
      <td><svg width='2em' height='2em' viewBox='0 0 16 16' class='bi bi-trophy-fill' fill='gold' xmlns='http://www.w3.org/2000/svg'>

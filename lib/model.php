@@ -177,7 +177,7 @@ function validate_user_email($email){
       $db = get_db();
       $query = "SELECT hashed_password FROM user WHERE email=?";
       if($statement = $db->prepare($query)){
-      $binding = array($email);
+         $binding = array($email);
          if(!$statement -> execute($binding)){
             return false;
          }
@@ -380,7 +380,27 @@ function leaderboard(){
      throw new Exception($e->getMessage());
      return "";
    }
+}
 
+function mapmarkers(){
+   session_start();
+   try{
+      $db = get_db();
+      $query = "SELECT * FROM bin";
+      if($statement = $db->prepare($query)){
+         if(!$statement -> execute()){
+            return false;
+         }
+         else{
+            $mapmarkers = $statement->fetchall(PDO::FETCH_ASSOC);
+            return $mapmarkers;
+         }
+      }
+   }
+   catch(PDOException $e){
+      throw new Exception($e->getMessage());
+      return "";
+   }
 }
 
 function january(){
