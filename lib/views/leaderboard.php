@@ -23,7 +23,7 @@
 <td></td>
 <form method="post">
   <input type="text" name="search" placeholder="search for user">
-  <input type="submit" name="submit">
+  <input style="visibility: hidden;" type="submit" name="submit">
 </form>
 
 <?php
