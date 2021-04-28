@@ -2,12 +2,8 @@
 
 <!--<iframe src="https://i.simmer.io/@Henrylllll/cdu-waste-management-map" style="width:350px;height:600px;border:0"></iframe>-->
 <head>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+  <link rel="stylesheet" href="../lib/views/leaflet/leaflet.css" />
+  <script src="../lib/views/leaflet/leaflet.js"></script>
 </head>
 
 <div id="map" style = "width:100%; height:580px;color:black;"></div>
@@ -24,6 +20,7 @@ function initMap() {
   });
 }
 initMap();
+setTimeout(function () { map.invalidateSize() }, 800);
 
 //map.addLayer(marker);
 
