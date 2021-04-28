@@ -102,8 +102,6 @@ $('#centercdu').find('a').on('click', function() {
     map.setView(loc, 17, {animation: true}); 
 });
 
-//var json = JSON.parse(<?php echo stripslashes($mapmarkers); ?>);
-//console.log(json);
 </script>
 <?php
 if(!empty($mapmarkers)){
