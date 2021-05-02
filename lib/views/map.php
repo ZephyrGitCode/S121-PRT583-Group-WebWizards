@@ -8,13 +8,76 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
+    <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
+    <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
 </head>
 
-<div id="map" style = "width:100%; height:580px;color:black;"></div>
+<div id="map" style="z-index:1;height:400px;color:black;"></div>
 <div id='findme'><a href='#'>Find me!</a></div>
 <div id='centercdu'><a href='#'>CDU Center</a></div>
 
+
+<form action="/addbin" method='POST'>
+  <input type='hidden' name='_method' value='post' />
+
+  <p class="acctext">Bin Position:</p>
+  <div class="inputBox">
+      <input type="text" name="latlng" id="latlng">
+  </div>
+ 
+  <select id="btype" name="btype" data-placeholder="Select a bin Type">
+    <option value="gw">General Waste</option>
+    <option value="com">Co-mingled</option>
+    <option value="cardpap">Cardboard And Paper</option>
+    <option value="env">Enviro-Collective</option>
+  </select>
+
+  <select id="bcolour" name="bcolour" data-placeholder="Select a building colour">
+    <option value="Red">Red</option>
+    <option value="Orange">Orange</option>
+    <option value="Green">Green</option>
+  </select>
+
+  <select id="bnum" name="bnum" data-placeholder="Select a building number">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+  </select>
+  <br/>
+  <input type="submit" name="submit" value="Add Single Bin">
+</form>
+
+<p>Hererere</p>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 <script>
+$(document).ready(function(){ 
+     $("select").awselect();
+});
+
+/*
+document.getElementById('btype').addEventListener('change', updateinputbtype);
+
+function updateinputbtype(evt) {
+  var x = document.getElementById("btype");
+  console.log(x.value);
+  document.getElementByName(id).value=x.value;
+}
+*/
+
+function updateinputbnum(evt) {
+  var x = document.getElementById("bnum");
+  console.log(x.value);
+  document.getElementByName(id).value=x.value;
+}
+
 var map;
 function initMap() {
   map = new L.Map("map", {
@@ -76,12 +139,23 @@ function onMapClick(e) {
   alert(msg);
   try {
     addMarker(e.latlng,msg);
-    sessionStorage.setItem()
+    sessionStorage.setItem("binloc",e.latlng.toString());
+    addBin();
   } catch (error) {
     console.log(error)
   }
 }
 map.on('click', onMapClick);
+
+
+function addBin(){
+  var latlng = sessionStorage.getItem("binloc");
+  //var lat = latlngstr.substring(7, 16);
+  //var long = latlngstr.substring(17, );
+  document.getElementById("latlng").value = latlng;
+}
+
+
 
 if("geolocation" in navigator)
 {

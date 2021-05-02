@@ -657,6 +657,44 @@ get("/map",function($app){
 // End get ----------------------------------------
 // Start Post -------------------------------------
 
+post("/addbin", function($app){
+   require MODEL;
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $latlng = $app->form('latlng');
+         $btype = $app->form('btype');
+         $bcolour = $app->form('bcolour');
+         $bnum = $app->form('bnum');
+         if($latlng && $btype && $bcolour && $bnum){
+            try{
+              addbin($bcolour,$bnum,$btype,$latlng);
+              $app->set_flash("Bin ".$bcolour." ".$btype." added at building number ".$bnum." location: ".$latlng); 
+              $app->render(LAYOUT,"map");  
+           }
+           catch(Exception $e){
+                $app->set_flash($e->getMessage());  
+                $app->redirect_to("map");          
+           }
+        }
+        else{
+           $app->set_flash("You are not signed up. Try again and don't leave any fields blank.");  
+           $app->redirect_to("map");
+        }
+
+      }
+      else{
+         $app->set_flash("You are not authorized to add bin locations");
+         $app->render(LAYOUT,"map");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->set_flash("Something wrong with the Maps.");
+      $app->render(LAYOUT,"map");
+   } 
+});
+
 post("/leaderboard",function($app){
    require MODEL;
    $app->set_message("title","CDU WasteAware Leaderboard");
