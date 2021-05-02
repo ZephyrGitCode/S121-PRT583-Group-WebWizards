@@ -192,7 +192,7 @@ if(!empty($mapmarkers)){
   foreach($mapmarkers As $marker){
     $bcolour = htmlspecialchars($marker['buildingcolour'],ENT_QUOTES, 'UTF-8');
     $bnum = htmlspecialchars($marker['buildingnum'],ENT_QUOTES, 'UTF-8');
-    $type = htmlspecialchars($marker['type'],ENT_QUOTES, 'UTF-8');
+    $type = htmlspecialchars($marker['btype'],ENT_QUOTES, 'UTF-8');
     $lat = htmlspecialchars($marker['lat'],ENT_QUOTES, 'UTF-8');
     $long = htmlspecialchars($marker['long'],ENT_QUOTES, 'UTF-8');
     ?>
