@@ -17,7 +17,8 @@ function get_user($id){
    $user = null;
    try{
       $db = get_db();
-      $query = "SELECT *,SUM(score.score)AS totalscore FROM USER,score WHERE user.fname = score.Username AND user.userNo=35";
+      //$query = "SELECT *,SUM(score.score) AS totalscore FROM USER,score WHERE user.fname = score.Username AND user.userNo=35";
+      $query = "SELECT *FROM USER WHERE userNo=?";
       if($statement = $db->prepare($query)){
          $binding = array($id);
          if(!$statement -> execute($binding)){
@@ -607,8 +608,6 @@ function december(){
 
 }
 
-
-
 function wasteclassification(){
    session_start();
    try{
@@ -622,6 +621,31 @@ function wasteclassification(){
    catch(PDOException $e){
      throw new Exception($e->getMessage());
      return "";
+   }
+
+}
+
+
+function addbin($bcolour,$bnum,$btype,$latlng){
+   try{
+      // fix latlng
+      $lat = -12.37481;
+      $lng = 130.87271;
+      $db = get_db();
+      $query = "INSERT INTO bin (buildingcolour, buildingnum, btype, lat, long) VALUES (?,?,?,?,?)";
+      if($statement = $db->prepare($query)){
+         $binding = array($bcolour,$bnum,$btype,$lat,$lng);
+         if(!$statement -> execute($binding)){
+            return false;
+         }
+         else{
+            return true;
+         }
+      }
+   }
+   catch(PDOException $e){
+      throw new Exception($e->getMessage());
+      return "";
    }
 
 }
