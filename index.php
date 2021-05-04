@@ -654,6 +654,70 @@ get("/map",function($app){
    } 
 });
 
+get("/quiz",function($app){
+   require MODEL;
+   $app->set_message("title","Waste Awareness Quiz");
+   session_start();
+   $email = $_SESSION["email"];
+   session_write_close();
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"quiz");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"quiz");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+get("/quiz2",function($app){
+   require MODEL;
+   $app->set_message("title","Waste Awareness Quiz");
+   session_start();
+   $email = $_SESSION["email"];
+   session_write_close();
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"quiz2");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"quiz2");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+get("/quiz3",function($app){
+   require MODEL;
+   $app->set_message("title","Waste Awareness Quiz");
+   session_start();
+   $email = $_SESSION["email"];
+   session_write_close();
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->render(LAYOUT,"quiz3");
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"quiz3");
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+});
+
 // End get ----------------------------------------
 // Start Post -------------------------------------
 
