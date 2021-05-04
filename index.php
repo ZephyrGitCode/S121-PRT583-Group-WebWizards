@@ -662,13 +662,15 @@ post("/addbin", function($app){
    try{
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
+         $lat = $app->form('latValue');
+         $lng = $app->form('lngValue');
          $latlng = $app->form('latlng');
          $btype = $app->form('btype');
          $bcolour = $app->form('bcolour');
          $bnum = $app->form('bnum');
          if($latlng && $btype && $bcolour && $bnum){
             try{
-              addbin($bcolour,$bnum,$btype,$latlng);
+              addbin($bcolour,$bnum,$btype,$lat, $lng);
               $app->set_flash("Bin ".$bcolour." ".$btype." added at building number ".$bnum." location: ".$latlng); 
               $app->render(LAYOUT,"map");  
            }

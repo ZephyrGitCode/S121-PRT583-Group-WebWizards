@@ -1,4 +1,4 @@
-<p><?php echo $message ?></p>
+<p><?php echo $message;?></p>
 
 <!--<iframe src="https://i.simmer.io/@Henrylllll/cdu-waste-management-map" style="width:350px;height:600px;border:0"></iframe>-->
 <head>
@@ -37,7 +37,8 @@
     <option value="Orange">Orange</option>
     <option value="Green">Green</option>
   </select>
-
+  <input type="hidden" id="latValue" name="latValue" value="" />
+  <input type="hidden" id="lngValue" name="lngValue" value="" />
   <select id="bnum" name="bnum" data-placeholder="Select a building number">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -103,7 +104,7 @@ function addMarker(latlng, msg="") {
   var markerOptions = {
     title: "BinLocation",
     clickable: true,
-    draggable: true,
+    draggable: false,
     //icon: customIcon
   }
   try {
@@ -140,6 +141,8 @@ function onMapClick(e) {
   try {
     addMarker(e.latlng,msg);
     sessionStorage.setItem("binloc",e.latlng.toString());
+    document.getElementById("latValue").value = e.latlng.lat;
+    document.getElementById("lngValue").value = e.latlng.lng;
     addBin();
   } catch (error) {
     console.log(error)
@@ -194,7 +197,7 @@ if(!empty($mapmarkers)){
     $bnum = htmlspecialchars($marker['buildingnum'],ENT_QUOTES, 'UTF-8');
     $type = htmlspecialchars($marker['btype'],ENT_QUOTES, 'UTF-8');
     $lat = htmlspecialchars($marker['lat'],ENT_QUOTES, 'UTF-8');
-    $long = htmlspecialchars($marker['long'],ENT_QUOTES, 'UTF-8');
+    $long = htmlspecialchars($marker['lng'],ENT_QUOTES, 'UTF-8');
     ?>
     <script>
       //loc = $lat+", "+$long

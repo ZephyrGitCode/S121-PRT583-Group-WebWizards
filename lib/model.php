@@ -626,13 +626,10 @@ function wasteclassification(){
 }
 
 
-function addbin($bcolour,$bnum,$btype,$latlng){
+function addbin($bcolour,$bnum,$btype,$lat,$lng){
    try{
-      // fix latlng
-      $lat = -12.37481;
-      $lng = 130.87271;
       $db = get_db();
-      $query = "INSERT INTO bin (buildingcolour, buildingnum, btype, lat, long) VALUES (?,?,?,?,?)";
+      $query = "INSERT INTO bin (buildingcolour, buildingnum, btype, lat, lng) VALUES (?,?,?,?,?)";
       if($statement = $db->prepare($query)){
          $binding = array($bcolour,$bnum,$btype,$lat,$lng);
          if(!$statement -> execute($binding)){
