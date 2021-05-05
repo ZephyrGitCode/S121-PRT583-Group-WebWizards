@@ -13,10 +13,16 @@
 </head>
 
 <div id="map" style="z-index:1;height:400px;color:black;"></div>
-<div id='findme'><a href='#'>Find me!</a></div>
-<div id='centercdu'><a href='#'>CDU Center</a></div>
+<div class="mapbtns">
+  <button class="btn btn-primary mapbtn" id='findme'>Find me!</button>
+  <button class="btn btn-primary mapbtn" id='centercdu'>CDU Center</button>
+</div>
 
-
+<?php
+$user = $user[0];
+// if user is not empty
+if(!empty($user) && $user['isadmin'] == 1){
+?>
 <form action="/addbin" method='POST'>
   <input type='hidden' name='_method' value='post' />
 
@@ -36,9 +42,16 @@
     <option value="Red">Red</option>
     <option value="Orange">Orange</option>
     <option value="Green">Green</option>
+    <option value="Blue">Blue</option>
+    <option value="Yellow">Yellow</option>
+    <option value="Pink">Pink</option>
+    <option value="Purple">Purple</option>
+    <option value="Brown">Brown</option>
   </select>
+
   <input type="hidden" id="latValue" name="latValue" value="" />
   <input type="hidden" id="lngValue" name="lngValue" value="" />
+
   <select id="bnum" name="bnum" data-placeholder="Select a building number">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -50,8 +63,10 @@
   <br/>
   <input type="submit" name="submit" value="Add Single Bin">
 </form>
+<?php
+}
+?>
 
-<p>Hererere</p>
 <br/>
 <br/>
 <br/>
@@ -92,21 +107,16 @@ setTimeout(function () { map.invalidateSize() }, 800);
 
 //map.addLayer(marker);
 
-function addMarker(latlng, msg="",icon) {
-  /*
-  // Icon options
-  var iconOptions = {
-    iconSize: [50, 50]
+function addMarker(latlng, msg="",icon = "") {
+  if (icon != ""){
+    var markerOptions = {
+      title: "BinLocation",
+      clickable: true,
+      draggable: false,
+      icon: icon
+    }
   }
-  // Creating a custom icon
-  var customIcon = L.icon(iconOptions);
-  */
-  var markerOptions = {
-    title: "BinLocation",
-    clickable: true,
-    draggable: false,
-    icon: icon
-  }
+
   try {
     var marker = new L.Marker(latlng,markerOptions);
     marker.bindPopup(msg).openPopup();
@@ -129,12 +139,6 @@ function locateUser() {
   });
 }
 
-function locateCenter() {
-  this.map.locate({
-    setView: true
-  });
-}
-
 function onMapClick(e) {
   var msg = "Recently Clicked "+e.latlng.toString();
   alert(msg);
@@ -148,7 +152,15 @@ function onMapClick(e) {
     console.log(error)
   }
 }
-map.on('click', onMapClick);
+<?php
+$user = $user[0];
+// if user is not empty
+if(!empty($user) && $user['isadmin'] == 1){
+?>
+  map.on('click', onMapClick);
+<?php
+}
+?>
 
 
 function addBin(){
@@ -166,15 +178,16 @@ navigator.geolocation.getCurrentPosition(
     function(position) {
         console.log(position);
         console.log('latitude: ${position.coords.latitude}, longitude:${position.coords.longitude}');
-        addMarker(position.coords.latitude,position.coords.longitude);
+        var loc = new L.LatLng(position.coords.latitude, position.coords.longitude);
+        addMarker(loc,"You are here");
     }
 )
 
-$('#findme').find('a').on('click', function() {
+$('#findme').on('click', function() {
   locateUser();
 });
 
-$('#centercdu').find('a').on('click', function() {
+$('#centercdu').on('click', function() {
     var loc = new L.LatLng(-12.37206, 130.86938);
     map.setView(loc, 17, {animation: true}); 
 });

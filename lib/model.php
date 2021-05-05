@@ -61,7 +61,7 @@ function sign_up($fname, $lname, $email, $studentnum, $password, $password_confi
    try{
       $db = get_db();
       if (validate_passwords($password, $password_confirm) != true){
-         throw new Exception("Error: Passwords must match and Password must contain at least 8 characters, one Capital letter and one number.");
+         throw new Exception("Error: password was incorrect.");
       }
       $salt = generate_salt();
       $password_hash = generate_password_hash($password,$salt);
