@@ -92,7 +92,7 @@ setTimeout(function () { map.invalidateSize() }, 800);
 
 //map.addLayer(marker);
 
-function addMarker(latlng, msg="") {
+function addMarker(latlng, msg="",icon) {
   /*
   // Icon options
   var iconOptions = {
@@ -105,7 +105,7 @@ function addMarker(latlng, msg="") {
     title: "BinLocation",
     clickable: true,
     draggable: false,
-    //icon: customIcon
+    icon: icon
   }
   try {
     var marker = new L.Marker(latlng,markerOptions);
@@ -153,12 +153,8 @@ map.on('click', onMapClick);
 
 function addBin(){
   var latlng = sessionStorage.getItem("binloc");
-  //var lat = latlngstr.substring(7, 16);
-  //var long = latlngstr.substring(17, );
   document.getElementById("latlng").value = latlng;
 }
-
-
 
 if("geolocation" in navigator)
 {
@@ -185,13 +181,9 @@ $('#centercdu').find('a').on('click', function() {
 
 </script>
 <?php
+// Unoptimized code, solution idea: save $mapmarkers to a javascript variable and iterate through in JS rather than PHP.
 if(!empty($mapmarkers)){
   $n = 1;
-  ?>
-  <script>
-  //localStorage.clear()
-  </script>
-  <?php
   foreach($mapmarkers As $marker){
     $bcolour = htmlspecialchars($marker['buildingcolour'],ENT_QUOTES, 'UTF-8');
     $bnum = htmlspecialchars($marker['buildingnum'],ENT_QUOTES, 'UTF-8');
@@ -200,8 +192,6 @@ if(!empty($mapmarkers)){
     $long = htmlspecialchars($marker['lng'],ENT_QUOTES, 'UTF-8');
     ?>
     <script>
-      //loc = $lat+", "+$long
-      //Storage.setItem(<?php echo $n ?>,loc)
       var lat = <?php echo $lat ?>;
       var long = <?php echo $long ?>;
       var bcolour = "<?php echo $bcolour ?>";
@@ -214,25 +204,45 @@ if(!empty($mapmarkers)){
         {
           case "gw":
             type = "General Waste"
+            var myIcon = L.icon({
+              iconUrl: '../lib/views/images/garbagered.png',
+              iconSize: [20, 20]
+            });
             break;
           case "com":
             type = "Co-mingled"
+            var myIcon = L.icon({
+              iconUrl: '../lib/views/images/com.png',
+              iconSize: [20, 20]
+            });
             break;
           case "cardpap":
             type = "Carboard and Paper"
+            var myIcon = L.icon({
+              iconUrl: '../lib/views/images/cardpap.png',
+              iconSize: [20, 20]
+            });
             break;
           case "gwcom":
             type = "General Waste and Co-mingled"
+            var myIcon = L.icon({
+              iconUrl: '../lib/views/images/gwcom.png',
+              iconSize: [20, 20]
+            });
             break;
           case "env":
             type = "Enviro-collective"
+            var myIcon = L.icon({
+              iconUrl: '../lib/views/images/green2.png',
+              iconSize: [20, 20]
+            });
             break;
         default:
           type = type
         }
         
         msg = bcolour+" "+bnum+" "+type;
-        addMarker(loc,msg)
+        addMarker(loc,msg,myIcon)
       }
     </script>
 <?php
