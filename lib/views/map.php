@@ -16,6 +16,35 @@
 <div class="mapbtns">
   <button class="btn btn-primary mapbtn" id='findme'>Find me!</button>
   <button class="btn btn-primary mapbtn" id='centercdu'>CDU Center</button>
+  <div class="maplegend">
+    <form>
+      <table>
+        <tbody>
+          <tr><th></th><th></th><th>Filter</th></tr>
+          <tr>
+            <td><img src="../lib/views/images/garbagered.png" width="40px;" height="40px;"/></td>
+            <td>Red General Waste</td>
+            <td><input name="checkbox" type="checkbox" id="toggle"></td>
+          </tr>
+          <tr>
+            <td><img src="../lib/views/images/com.png" width="40px;" height="40px;"/></td>
+            <td>Yellow Co-mingled</td>
+            <td><input name="checkbox" type="checkbox" id="toggle"></td>
+          </tr>
+          <tr>
+            <td><img src="../lib/views/images/cardpap.png" width="40px;" height="40px;"/></td>
+            <td>Cardboard And Paper</td>
+            <td><input name="checkbox" type="checkbox" id="toggle"></td>
+          </tr>
+          <tr>
+            <td><img src="../lib/views/images/green2.png" width="40px;" height="40px;"/></td>
+            <td>Enviro-Collective</td>
+            <td><input name="checkbox" type="checkbox" id="toggle"></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
 </div>
 
 <?php
@@ -153,8 +182,7 @@ function onMapClick(e) {
   }
 }
 <?php
-$user = $user[0];
-// if user is not empty
+// if user is not empty and is admin, allow map usage
 if(!empty($user) && $user['isadmin'] == 1){
 ?>
   map.on('click', onMapClick);

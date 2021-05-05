@@ -548,7 +548,6 @@ td, th {
 .mapbtns{
   text-align: center;
   padding-top: 10px;
-  
 }
 
 .mapbtn{
@@ -557,7 +556,11 @@ td, th {
   font-size: large;
 }
 
-
+.maplegend{
+  text-align: left;
+  margin-top: 10px;
+}
+/* map end */
 
   /**
 
