@@ -22,22 +22,22 @@
         <tbody>
           <tr><th></th><th></th><th>Filter</th></tr>
           <tr>
-            <td><img src="../lib/views/images/garbagered.png" width="40px;" height="40px;"/></td>
+            <td><img src="../lib/views/images/reddot.png" width="40px;" height="40px;"/></td>
             <td>Red General Waste</td>
             <td><input name="checkbox" type="checkbox" id="toggle"></td>
           </tr>
           <tr>
-            <td><img src="../lib/views/images/com.png" width="40px;" height="40px;"/></td>
+            <td><img src="../lib/views/images/yellowdot.png" width="40px;" height="40px;"/></td>
             <td>Yellow Co-mingled</td>
             <td><input name="checkbox" type="checkbox" id="toggle"></td>
           </tr>
           <tr>
-            <td><img src="../lib/views/images/cardpap.png" width="40px;" height="40px;"/></td>
+            <td><img src="../lib/views/images/bluedot.png" width="40px;" height="40px;"/></td>
             <td>Cardboard And Paper</td>
             <td><input name="checkbox" type="checkbox" id="toggle"></td>
           </tr>
           <tr>
-            <td><img src="../lib/views/images/green2.png" width="40px;" height="40px;"/></td>
+            <td><img src="../lib/views/images/greendot.png" width="40px;" height="40px;"/></td>
             <td>Enviro-Collective</td>
             <td><input name="checkbox" type="checkbox" id="toggle"></td>
           </tr>
@@ -246,36 +246,36 @@ if(!empty($mapmarkers)){
           case "gw":
             type = "General Waste"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/garbagered.png',
-              iconSize: [20, 20]
+              iconUrl: '../lib/views/images/reddot.png',
+              iconSize: [10, 10]
             });
             break;
           case "com":
             type = "Co-mingled"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/com.png',
-              iconSize: [20, 20]
+              iconUrl: '../lib/views/images/yellowdot.png',
+              iconSize: [10, 10]
             });
             break;
           case "cardpap":
             type = "Carboard and Paper"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/cardpap.png',
-              iconSize: [20, 20]
+              iconUrl: '../lib/views/images/bluedot.png',
+              iconSize: [10, 10]
             });
             break;
           case "gwcom":
             type = "General Waste and Co-mingled"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/gwcom.png',
-              iconSize: [20, 20]
+              iconUrl: '../lib/views/images/rydot.png',
+              iconSize: [20, 10]
             });
             break;
           case "env":
             type = "Enviro-collective"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/green2.png',
-              iconSize: [20, 20]
+              iconUrl: '../lib/views/images/greendot.png',
+              iconSize: [10, 10]
             });
             break;
         default:
