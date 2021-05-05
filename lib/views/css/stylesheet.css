@@ -544,6 +544,19 @@ td, th {
 
   /* Leaderboard end */
 
+/* map */
+.mapbtns{
+  text-align: center;
+  padding-top: 10px;
+  
+}
+
+.mapbtn{
+  width: 48%;
+  height: 40px;
+  font-size: large;
+}
+
 
 
   /**

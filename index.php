@@ -641,6 +641,7 @@ get("/map",function($app){
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
          $app->set_message("mapmarkers", mapmarkers());
+         $app->set_message("user", get_user($id));
          $app->render(LAYOUT,"map");
       }
       else{
