@@ -38,7 +38,6 @@
       border-radius: 5px;
       width: 300px;
       position: relative;
-      /*transition: all 5s ease-in-out;*/
     }
 
     mapPopUpMain mapPopUpClose {
