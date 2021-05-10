@@ -10,7 +10,7 @@
     crossorigin=""></script>
   <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
   <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
-  <script type="text/javascript" src="../lib/views/css/popupstyle.css"></script>
+  <link rel="stylesheet" type="text/css" href="../lib/views/css/popupstyle.css">
 </head>
 
 <!--Pop up information start-->
