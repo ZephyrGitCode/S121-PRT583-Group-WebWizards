@@ -11,7 +11,20 @@
     <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
     <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
 </head>
-<a href="/"><span><img src="https://cdn.pixabay.com/photo/2013/07/12/14/28/bin-148264_960_720.png" width="50px" height="50px"></span></a>
+
+<!--Pop up information start-->
+<a href="#mapPopUp"><span><img class="glyphicon glyphicon-info-sign" width="50px" height="50px"></span></a>
+<div id="mapPopUp" class="mapPopUpOverlay">
+      <a class="mapPopupOutClose" href="#"></a>
+      <div class="mapPopUpMain">
+        <h2>Libbrary Information Desk</h2>
+        <a class="mapPopUpClose" href="#">&times;</a>
+        <div class="mapPopUpContent">
+          <p>Information Desk</p>
+        </div>
+      </div>
+    </div>
+<!--pop up information end-->
 
 <div id="map" style="z-index:1;height:400px;color:black;"></div>
 <div class="mapbtns">
