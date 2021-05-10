@@ -539,9 +539,9 @@ post("/leaderboard",function($app){
 });
 
 
-post("/monthly_leaderboard()",function($app){
+post("/monthly_leaderboard",function($app){
    require MODEL;
-   $app->set_message("title","CDU WasteAware Monthly Leaderboard");
+   $app->set_message("title","CDU WasteAware Yearly Monthly Leaderboard");
    session_start();
    $email = $_SESSION["email"];
    session_write_close();
@@ -564,7 +564,7 @@ post("/monthly_leaderboard()",function($app){
    } 
 });
 
-post("/alltime_leaderboard()",function($app){
+post("/alltime_leaderboard",function($app){
    require MODEL;
    $app->set_message("title","CDU WasteAware All-Time Leaderboard");
    session_start();
