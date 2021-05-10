@@ -14,7 +14,7 @@
 </head>
 
 <!--Pop up information start-->
-<a width="50px" height="50px" href="#mapPopUp">&#8505;</a>
+<a width="50px" height="50px" href="#mapPopUp"><img src="../lib/views/images/popupinforicon.png"></a>
 <div id="mapPopUp" class="mapPopUpOverlay">
       <a class="mapPopupOutClose" href="#"></a>
       <div class="mapPopUpMain">
