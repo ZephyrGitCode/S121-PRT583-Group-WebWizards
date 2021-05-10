@@ -11,7 +11,7 @@
     <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
     <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
   <!--pop up style start-->
-  <sytle>
+  <sytle type="text/css">
     mapPopUpOverlay {
       position: fixed;
       top: 0;
