@@ -33,7 +33,7 @@
 
     <div class="col-lg-3">
         <img src="../lib/views/images/glass-bin.jpg" alt="HTML5 Icon" width="128" height="128">
-        <p style="text align: center;"> Above bin is used for collecting material like glass and paper. </p>
+        <p style="text align: center;"> This bin is used for collecting material like glass and paper. </p>
     </div>
 
     
@@ -45,11 +45,11 @@
 
     <div class="col-lg-3">
         <img src="../lib/views/images/recyclinggreenwaste.png" alt="HTML5 Icon" width="128" height="128">
-        <p style="text align: center;"> This bin is only for  </p>
+        <p style="text align: center;"> This bin is only for wasted food items.  </p>
     </div>
 
     <div class="col-lg-3">
         <img src="../lib/views/images/co-minglebin1.jpg" alt="HTML5 Icon" width="128" height="128">
-        <p style="text align: center;"> there are info regarding waste management below </p>
+        <p style="text align: center;"> This bin is only used for recycled items. </p>
     </div>
 </div>
