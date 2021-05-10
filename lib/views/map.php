@@ -14,14 +14,14 @@
 </head>
 
 <!--Pop up information start-->
-<a width="50px" height="50px" href="#mapPopUp"><img src="../lib/views/images/popupinforicon.png"></a>
+<a href="#mapPopUp"><img width="40px" height="40px" src="../lib/views/images/popupinforicon.png"></a>
 <div id="mapPopUp" class="mapPopUpOverlay">
       <a class="mapPopupOutClose" href="#"></a>
       <div class="mapPopUpMain">
-        <h2>Map information title</h2>
+        <h2 style="color:black">Map information title</h2>
         <a class="mapPopUpClose" href="#">&times;</a>
         <div class="mapPopUpContent">
-          <p>map information content</p>
+          <p style="color:black">map information content</p>
         </div>
       </div>
     </div>

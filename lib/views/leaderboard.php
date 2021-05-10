@@ -1,6 +1,21 @@
 <style media="screen">
 </style>
-
+<head>
+<link rel="stylesheet" type="text/css" href="../lib/views/css/popupstyle.css">
+</head>
+<!--Pop up information start-->
+<a href="#mapPopUp"><img width="40px" height="40px" src="../lib/views/images/popupinforicon.png"></a>
+<div id="mapPopUp" class="mapPopUpOverlay">
+      <a class="mapPopupOutClose" href="#"></a>
+      <div class="mapPopUpMain">
+        <h2 style="color:black">Leaderboard title</h2>
+        <a class="mapPopUpClose" href="#">&times;</a>
+        <div class="mapPopUpContent">
+          <p style="color:black">Leaderboard content</p>
+        </div>
+      </div>
+    </div>
+<!--pop up information end-->
 <div class="dropdown">
   <h1 class="dropbtn" id= "leaderboard_heading"> <span class="glyphicon glyphicon-chevron-down"></span> Yearly Leaderboard - 2021</h1>
   <div class="dropdown-content">
