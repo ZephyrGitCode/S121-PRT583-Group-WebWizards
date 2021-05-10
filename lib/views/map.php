@@ -22,27 +22,28 @@
         <tbody>
           <tr><th></th><th></th><th>Filter</th></tr>
           <tr>
-            <td><img src="../lib/views/images/reddot.png" width="40px;" height="40px;"/></td>
+            <td><img src="../lib/views/images/gw.png" width="40px;" height="40px;"/></td>
             <td>Red General Waste</td>
-            <td><input name="checkbox" type="checkbox" id="toggle"></td>
+            <td><input name="gwc" type="checkbox" id="toggle"></td>
           </tr>
           <tr>
-            <td><img src="../lib/views/images/yellowdot.png" width="40px;" height="40px;"/></td>
+            <td><img src="../lib/views/images/com.png" width="40px;" height="40px;"/></td>
             <td>Yellow Co-mingled</td>
-            <td><input name="checkbox" type="checkbox" id="toggle"></td>
+            <td><input name="comc" type="checkbox" id="toggle"></td>
           </tr>
           <tr>
-            <td><img src="../lib/views/images/bluedot.png" width="40px;" height="40px;"/></td>
+            <td><img src="../lib/views/images/cardpap.png" width="40px;" height="40px;"/></td>
             <td>Cardboard And Paper</td>
-            <td><input name="checkbox" type="checkbox" id="toggle"></td>
+            <td><input name="carcpapc" type="checkbox" id="toggle"></td>
           </tr>
           <tr>
-            <td><img src="../lib/views/images/greendot.png" width="40px;" height="40px;"/></td>
+            <td><img src="../lib/views/images/green2.png" width="40px;" height="40px;"/></td>
             <td>Enviro-Collective</td>
-            <td><input name="checkbox" type="checkbox" id="toggle"></td>
+            <td><input name="envc" type="checkbox" id="toggle"></td>
           </tr>
         </tbody>
       </table>
+      <input type="submit" name="" value="Save">
     </form>
   </div>
 </div>
@@ -52,8 +53,8 @@ $user = $user[0];
 // if user is not empty
 if(!empty($user) && $user['isadmin'] == 1){
 ?>
-<form action="/addbin" method='POST'>
-  <input type='hidden' name='_method' value='post' />
+<form action="/addbin" method='put'>
+  <input type='hidden' name='_method' value='put' />
 
   <p class="acctext">Bin Position:</p>
   <div class="inputBox">
@@ -107,6 +108,8 @@ $(document).ready(function(){
      $("select").awselect();
 });
 
+
+
 /*
 document.getElementById('btype').addEventListener('change', updateinputbtype);
 
@@ -118,6 +121,12 @@ function updateinputbtype(evt) {
 */
 
 function updateinputbnum(evt) {
+  var x = document.getElementById("bnum");
+  console.log(x.value);
+  document.getElementByName(id).value=x.value;
+}
+
+function updateinputfilter(evt) {
   var x = document.getElementById("bnum");
   console.log(x.value);
   document.getElementByName(id).value=x.value;
@@ -246,36 +255,36 @@ if(!empty($mapmarkers)){
           case "gw":
             type = "General Waste"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/reddot.png',
-              iconSize: [10, 10]
+              iconUrl: '../lib/views/images/gw.png',
+              iconSize: [15, 15]
             });
             break;
           case "com":
             type = "Co-mingled"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/yellowdot.png',
-              iconSize: [10, 10]
+              iconUrl: '../lib/views/images/com.png',
+              iconSize: [15, 15]
             });
             break;
           case "cardpap":
             type = "Carboard and Paper"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/bluedot.png',
-              iconSize: [10, 10]
+              iconUrl: '../lib/views/images/cardpap.png',
+              iconSize: [15, 15]
             });
             break;
           case "gwcom":
             type = "General Waste and Co-mingled"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/rydot.png',
-              iconSize: [20, 10]
+              iconUrl: '../lib/views/images/gwcom.png',
+              iconSize: [25, 15]
             });
             break;
           case "env":
             type = "Enviro-collective"
             var myIcon = L.icon({
-              iconUrl: '../lib/views/images/greendot.png',
-              iconSize: [10, 10]
+              iconUrl: '../lib/views/images/green2.png',
+              iconSize: [15, 15]
             });
             break;
         default:

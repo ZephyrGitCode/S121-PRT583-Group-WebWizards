@@ -221,6 +221,8 @@ body{background-color:#232d35;color:#ffffff;font-weight: 400;margin: 0;line-heig
 .input-icons {
     position: relative;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 .icon-i {
     position: absolute;
@@ -435,7 +437,8 @@ input{
     width: calc(25% - 20px);
     padding: 10px;
     border-radius: 10px;
-    height: 100px;
+    min-width: 50%;
+    height: 150px;
     margin: 20px auto; /* Added */
     float: none; /* Added */
     margin-bottom: 10px; /* Added */
@@ -451,7 +454,7 @@ input{
     }
 
     .card {
-        width: 100%;
+        width: 43%;
         height: 25%;
     }
 
@@ -534,7 +537,9 @@ td, th {
     padding: 10px;
     border-radius: 10px;
     text-align: center;
-    margin: 20px auto; /* Added */
+    min-width: 43%;
+    height: 150px;
+    margin: 20px 10px 1px 10px;
     float: none; /* Added */
     margin-bottom: 10px; /* Added */
     -webkit-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
