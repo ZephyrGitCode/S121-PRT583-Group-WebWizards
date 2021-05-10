@@ -10,17 +10,80 @@
     crossorigin=""></script>
     <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
     <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
+  <!--pop up style start-->
+  <sytle>
+    mapPopUpOverlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+      z-index: 15;
+    }
+
+    mapPopUpOverlay:target {
+      visibility: visible;
+      opacity: 1;
+
+    }
+
+    mapPopUpMain {
+      margin: 100px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      width: 300px;
+      position: relative;
+      /*transition: all 5s ease-in-out;*/
+    }
+
+    mapPopUpMain mapPopUpClose {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+    }
+
+    mapPopupOutClose {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: all 200ms;
+      font-size: 30px;
+      opacity: 0;
+    }
+
+    mapPopUpMain mapPopUpClose:hover {
+      color: red;
+    }
+    mapPopUpMain mapPopUpContent {
+      max-height: 30%;
+      overflow: auto;
+    }
+   </style>
+   <!--pop up style end-->
 </head>
 
 <!--Pop up information start-->
-<a href="#mapPopUp"><span><img class="glyphicon glyphicon-info-sign" width="50px" height="50px"></span></a>
+<a width="50px" height="50px" href="#mapPopUp">&#8505;</a>
 <div id="mapPopUp" class="mapPopUpOverlay">
       <a class="mapPopupOutClose" href="#"></a>
       <div class="mapPopUpMain">
-        <h2>Libbrary Information Desk</h2>
+        <h2>Map information title</h2>
         <a class="mapPopUpClose" href="#">&times;</a>
         <div class="mapPopUpContent">
-          <p>Information Desk</p>
+          <p>map information content</p>
         </div>
       </div>
     </div>
