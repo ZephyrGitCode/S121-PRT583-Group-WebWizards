@@ -8,70 +8,9 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-    <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
-    <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
-  <!--pop up style start-->
-  <sytle type="text/css">
-    mapPopUpOverlay {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.7);
-      transition: opacity 500ms;
-      visibility: hidden;
-      opacity: 0;
-      z-index: 15;
-    }
-
-    mapPopUpOverlay:target {
-      visibility: visible;
-      opacity: 1;
-
-    }
-
-    mapPopUpMain {
-      margin: 100px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 5px;
-      width: 300px;
-      position: relative;
-    }
-
-    mapPopUpMain mapPopUpClose {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      transition: all 200ms;
-      font-size: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      color: black;
-    }
-
-    mapPopupOutClose {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      transition: all 200ms;
-      font-size: 30px;
-      opacity: 0;
-    }
-
-    mapPopUpMain mapPopUpClose:hover {
-      color: red;
-    }
-    mapPopUpMain mapPopUpContent {
-      max-height: 30%;
-      overflow: auto;
-    }
-   </style>
-   <!--pop up style end-->
+  <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
+  <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
+  <script type="text/javascript" src="../lib/views/css/stylesheet.css"></script>
 </head>
 
 <!--Pop up information start-->
