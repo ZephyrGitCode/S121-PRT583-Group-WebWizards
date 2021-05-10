@@ -366,12 +366,26 @@ function get_user_name(){
    return $name;	
 }
 
-function leaderboard(){
+function yearly_leaderboard(){
    session_start();
    try{
      $db = get_db();
-     $query = "SELECT user.fname,user.lname, SUM(score.score),score.year FROM USER, SCORE WHERE user.fname = score.Username  GROUP BY user.fname ORDER BY SUM(score.score) DESC
-     ";
+     $query = "SELECT user.fname,user.lname, SUM(score.score),score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.year = YEAR(CURRENT_TIMESTAMP()) GROUP BY user.fname ORDER BY SUM(score.score) DESC";
+     $statement = $db->prepare($query);
+     $statement -> execute();
+     $list = $statement->fetchall(PDO::FETCH_ASSOC);
+     return $list;
+   }
+   catch(PDOException $e){
+     throw new Exception($e->getMessage());
+     return "";
+   }
+}
+function alltime_leaderboard(){
+   session_start();
+   try{
+     $db = get_db();
+     $query = "SELECT user.fname,user.lname, SUM(score.score),score.year FROM USER, SCORE WHERE user.fname = score.Username GROUP BY user.fname ORDER BY SUM(score.score) DESC";
      $statement = $db->prepare($query);
      $statement -> execute();
      $list = $statement->fetchall(PDO::FETCH_ASSOC);
@@ -404,198 +418,11 @@ function mapmarkers(){
    }
 }
 
-function january(){
+function monthly_leaderboard(){
    session_start();
    try{
      $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'January' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function february(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'February' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function march(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'March' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function april(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'April' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function may(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'May' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function june(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'June' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function july(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'July' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function august(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'August' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function september(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'September' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function october(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'October' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function november(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'November' ORDER BY score.score DESC";
-     $statement = $db->prepare($query);
-     $statement -> execute();
-     $list = $statement->fetchall(PDO::FETCH_ASSOC);
-     return $list;
-   }
-   catch(PDOException $e){
-     throw new Exception($e->getMessage());
-     return "";
-   }
-
-}
-
-function december(){
-   session_start();
-   try{
-     $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = 'December' ORDER BY score.score DESC";
+     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = MONTHNAME(CURRENT_TIMESTAMP ()) ORDER BY score.score DESC";
      $statement = $db->prepare($query);
      $statement -> execute();
      $list = $statement->fetchall(PDO::FETCH_ASSOC);

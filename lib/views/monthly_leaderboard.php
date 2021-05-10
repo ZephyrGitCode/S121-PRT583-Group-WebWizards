@@ -1,5 +1,15 @@
 <style media="screen">
+#leaderboard_heading{
+    margin-bottom:20px;
+}
+#searching{
+    margin-top:50px;
+}
 </style>
+<head>
+    <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
+    <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
+</head>
 <?php foreach($list as $blah){
   $month = htmlspecialchars($blah['month'],ENT_QUOTES, 'UTF-8');
   $years = htmlspecialchars($blah['year'],ENT_QUOTES, 'UTF-8');
@@ -7,30 +17,17 @@
 
   ?>
 
+  <h1 style="text-align:center;"  id= "leaderboard_heading"> <?php echo"Leaderboard </br>$month - $years"?></h1>
 
-<div class="dropdown">
-  <h1 style="text-align:center;" class="dropbtn" id= "leaderboard_heading"> <span class="glyphicon glyphicon-chevron-down"></span> <?php echo"Leaderboard </br>$month - $years"?></h1>
-  <div class="dropdown-content">
-  <a href="/leaderboard"><h1>Yearly leaderboard</h1></a>
-    <a href="/january"><h1>January</h1></a>
-    <a href="/february"><h1>February</h1> </a>
-    <a href="/march"><h1>March</h1> </a>
-    <a href="/april"><h1>April</h1></a>
-    <a href="/may"><h1>May</h1> </a>
-    <a href="/june"><h1>June</h1> </a>
-    <a href="/july"><h1>July</h1></a>
-    <a href="/august"><h1>August</h1> </a>
-    <a href="/september"><h1>September</h1> </a>
-    <a href="/october"><h1>October</h1></a>
-    <a href="/november"><h1>November</h1> </a>
-    <a href="/december"><h1>December</h1> </a>
-  </div>
-</div>
+ <select id="btype" name="btype" onchange="location = this.value;" data-placeholder="Select for All-Time or Yearly leaderboard">
+    <option value="/alltime_leaderboard">All-Time Leaderboard</option>
+    <option value="/leaderboard">Yearly Leaderboard</option>
+</select></br></br>
 
 <td></td>
 <form method="post">
-  <input type="text" name="search" placeholder="search for user">
-  <input style="visibility: hidden;" type="submit" name="submit">
+  <input id="searching" type="text" name="search" placeholder="search for user">
+  <input style="display: none;" type="submit" name="submit">
 </form>
 
 <?php
@@ -145,19 +142,7 @@ if(!empty($list)){
 
  ?>
  <script>
- /* When the user clicks on the button,
- toggle between hiding and showing the dropdown content */
- function test() {
-   document.getElementById("myDropdown").classList.toggle("show");
- }
-
- // Close the dropdown if the user clicks outside of it
- window.onclick = function(e) {
-   if (!e.target.matches('.dropbtn')) {
-   var myDropdown = document.getElementById("myDropdown");
-     if (myDropdown.classList.contains('show')) {
-       myDropdown.classList.remove('show');
-     }
-   }
- }
+ $(document).ready(function(){ 
+     $("select").awselect();
+});
  </script>
