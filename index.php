@@ -758,29 +758,24 @@ put("/map",function($app){
    $app->set_message("title","CDU WasteAware");
    require MODEL;
    try{
-       if(is_authenticated()){
-         $id = get_user_id();
-         $gwc = $app->form('gwc');
-         $comc = $app->form('comc');
-         $cardpapc = $app->form('cardpapc');
-         $envc = $app->form('envc');
-         try{
-            $app->set_message("list", monthly_leaderboard());
-            $app->redirect_to("/");   
-         }
-         catch(Exception $e){
-            $app->set_flash($e->getMessage());  
-            $app->redirect_to("/");          
-         }
-       }
-       else{
-          $app->set_flash("You are not authenticated, please login correctly");  
-          $app->redirect_to("/");           
-       }
+      $id = get_user_id();
+      $gwc = $app->form('gwc');
+      $comc = $app->form('comc');
+      $cardpapc = $app->form('cardpapc');
+      $envc = $app->form('envc');
+      try{
+         $app->set_message("mapmarkers", mapmarkers());
+         $app->set_message("filter", $gwc.",".$comc.",".$cardpapc.",".$envc);
+         $app->render(LAYOUT,"map");  
+      }
+      catch(Exception $e){
+         $app->set_flash($e->getMessage());  
+         $app->render(LAYOUT,"map");        
+      }
    }
    catch(Exception $e){
         $app->set_flash("{$e->getMessage()}");  
-        $app->redirect_to("/");
+        $app->render(LAYOUT,"map");
    }
 });
 

@@ -1,4 +1,27 @@
 <p><?php echo $message;?></p>
+<?php
+if (EMPTY($filter) == 0){
+  if (strstr($filter, "gw")){
+    $gwc = true;
+  }else{$gwc = false;}
+  if (strstr($filter, "com")){
+    $comc = true;
+  }else{$comc = false;}
+  if (strstr($filter, "cardpap")){
+    $cardpapc = true;
+  }else{$cardpapc = false;}
+  if (strstr($filter, "env")){
+    $envc = true;
+  }else{$envc = false;}
+}else{
+  $gwc = true;
+  $comc = true;
+  $cardpapc = true;
+  $envc = true;
+}
+
+?>
+
 
 <!--<iframe src="https://i.simmer.io/@Henrylllll/cdu-waste-management-map" style="width:350px;height:600px;border:0"></iframe>-->
 <head>
@@ -11,35 +34,36 @@
     <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
     <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
 </head>
-
+<p>Select a bin for more information</p>
 <div id="map" style="z-index:1;height:400px;color:black;"></div>
 <div class="mapbtns">
   <button class="btn btn-primary mapbtn" id='findme'>Find me!</button>
   <button class="btn btn-primary mapbtn" id='centercdu'>CDU Center</button>
   <div class="maplegend">
-    <form>
+    <form action="/map" method='post'>
+      <input type='hidden' name='_method' value='put' />
       <table>
         <tbody>
           <tr><th></th><th></th><th>Filter</th></tr>
           <tr>
             <td><img src="../lib/views/images/gw.png" width="40px;" height="40px;"/></td>
             <td>Red General Waste</td>
-            <td><input name="gwc" type="checkbox" id="toggle"></td>
+            <td><input name="gwc" type="checkbox" id="toggle" value="gw" <?php if ($gwc){ echo "checked"; }?>></td>
           </tr>
           <tr>
             <td><img src="../lib/views/images/com.png" width="40px;" height="40px;"/></td>
             <td>Yellow Co-mingled</td>
-            <td><input name="comc" type="checkbox" id="toggle"></td>
+            <td><input name="comc" type="checkbox" id="toggle" value="com" <?php if ($comc){ echo "checked"; }?>></td>
           </tr>
           <tr>
             <td><img src="../lib/views/images/cardpap.png" width="40px;" height="40px;"/></td>
             <td>Cardboard And Paper</td>
-            <td><input name="carcpapc" type="checkbox" id="toggle"></td>
+            <td><input name="cardpapc" type="checkbox" id="toggle" value="cardpap" <?php if ($cardpapc){ echo "checked"; }?>></td>
           </tr>
           <tr>
             <td><img src="../lib/views/images/green2.png" width="40px;" height="40px;"/></td>
             <td>Enviro-Collective</td>
-            <td><input name="envc" type="checkbox" id="toggle"></td>
+            <td><input name="envc" type="checkbox" value="env" <?php if ($envc){ echo "checked"; }?>></td>
           </tr>
         </tbody>
       </table>
@@ -53,8 +77,8 @@ $user = $user[0];
 // if user is not empty
 if(!empty($user) && $user['isadmin'] == 1){
 ?>
-<form action="/addbin" method='put'>
-  <input type='hidden' name='_method' value='put' />
+<form action="/addbin" method='post'>
+  <input type='hidden' name='_method' value='post' />
 
   <p class="acctext">Bin Position:</p>
   <div class="inputBox">
@@ -247,7 +271,12 @@ if(!empty($mapmarkers)){
       var bcolour = "<?php echo $bcolour ?>";
       var bnum = "<?php echo $bnum ?>";
       var type = "<?php echo $type ?>";
-      if (lat != ""){
+      var filter = "<?php echo $filter ?>";
+      var search = filter.search(type);
+      var check1 = "<?php echo $gwc ?>"
+      var check2 = "<?php echo $comc ?>"
+      if (search >= 0 || check1 == true || check2==true){
+        if (lat != ""){
         console.log(lat+" "+long);
         var loc = new L.LatLng(lat, long);
         switch(type)
@@ -294,6 +323,8 @@ if(!empty($mapmarkers)){
         msg = bcolour+" "+bnum+" "+type;
         addMarker(loc,msg,myIcon)
       }
+    }
+
     </script>
 <?php
     $n+=1;
