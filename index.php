@@ -318,7 +318,7 @@ get("/specialisedwaste",function($app){
 
 get("/activities",function($app){
    require MODEL;
-   $app->set_message("title"," Specialised Waste");
+   $app->set_message("title"," Activities");
    $email = $_SESSION["email"];
    $id = get_user_id();
    try{
