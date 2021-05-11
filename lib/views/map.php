@@ -1,5 +1,6 @@
 <p><?php echo $message;?></p>
 <?php
+
 if (EMPTY($filter) == 0){
   if (strstr($filter, "gw")){
     $gwc = true;
@@ -275,7 +276,7 @@ if(!empty($mapmarkers)){
       var search = filter.search(type);
       var check1 = "<?php echo $gwc ?>"
       var check2 = "<?php echo $comc ?>"
-      if (search >= 0 || check1 == true || check2==true){
+      if (search >= 0){
         if (lat != ""){
         console.log(lat+" "+long);
         var loc = new L.LatLng(lat, long);

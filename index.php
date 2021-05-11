@@ -386,17 +386,20 @@ get("/map",function($app){
    require MODEL;
    $app->set_message("title","Map");
    $email = $_SESSION["email"];
+   $filter = "gw,com,cardpap,env";
    $id = get_user_id();
    try{
       // change to isadmin?
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
          $app->set_message("mapmarkers", mapmarkers());
+         $app->set_message("filter", $filter);
          $app->set_message("user", get_user($id));
          $app->render(LAYOUT,"map");
       }
       else{
          $app->set_message("mapmarkers", mapmarkers());
+         $app->set_message("filter", $filter);
          $app->render(LAYOUT,"map");
       }
    }
