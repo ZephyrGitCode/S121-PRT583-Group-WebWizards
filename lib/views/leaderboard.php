@@ -7,22 +7,6 @@
 }
 </style>
 <head>
-    <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
-    <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
-</head>
-<?php foreach($list as $blah){
-  $years = htmlspecialchars($blah['year'],ENT_QUOTES, 'UTF-8');
-  }
-
-  ?>
-
-<h1 style="text-align:center;"  id= "leaderboard_heading"> <?php echo"Leaderboard - $years"?></h1>
-
-<select id="btype" name="btype" onchange="location = this.value;" data-placeholder="Select for All Time or Monthly leaderboard">
-    <option value="/alltime_leaderboard">All time Leaderboard</option>
-    <option value="/monthly_leaderboard">Monthly Leaderboard</option>
-</select></br></br>
-
 <td></td>
 <form method="post">
   <input id="searching" type="text" name="search" placeholder="search for user">
