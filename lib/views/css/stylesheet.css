@@ -221,6 +221,8 @@ body{background-color:#232d35;color:#ffffff;font-weight: 400;margin: 0;line-heig
 .input-icons {
     position: relative;
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 .icon-i {
     position: absolute;
@@ -411,6 +413,8 @@ input{
     padding: 5px 0 5px 0;
     font-size: 16px;
     z-index: 2;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .footer-nav a {
@@ -435,7 +439,8 @@ input{
     width: calc(25% - 20px);
     padding: 10px;
     border-radius: 10px;
-    height: 100px;
+    min-width: 50%;
+    height: 150px;
     margin: 20px auto; /* Added */
     float: none; /* Added */
     margin-bottom: 10px; /* Added */
@@ -451,7 +456,7 @@ input{
     }
 
     .card {
-        width: 100%;
+        min-width: 43%;
         height: 25%;
     }
 
@@ -531,10 +536,13 @@ td, th {
   
 .card, .info_card{
     color: white;
+    background-color: #232d35;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
-    margin: 20px auto; /* Added */
+    min-width: 43%;
+    min-height: 150px;
+    margin: 20px 10px 1px 10px;
     float: none; /* Added */
     margin-bottom: 10px; /* Added */
     -webkit-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
@@ -548,7 +556,6 @@ td, th {
 .mapbtns{
   text-align: center;
   padding-top: 10px;
-  
 }
 
 .mapbtn{
@@ -557,7 +564,11 @@ td, th {
   font-size: large;
 }
 
-
+.maplegend{
+  text-align: left;
+  margin-top: 10px;
+}
+/* map end */
 
   /**
 
@@ -591,6 +602,7 @@ Github: https://github.com/prevwong/awesome-select/
     width: 100%;
     position: relative;
     cursor: pointer;
+    border-radius: 10px;
     -webkit-transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     -moz-transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     -o-transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
@@ -598,6 +610,7 @@ Github: https://github.com/prevwong/awesome-select/
     .awselect > .bg {
       background: #fff;
       height: 0%;
+      border-radius: 10px;
       float: left;
       width: 100%;
       position: absolute;
@@ -614,6 +627,7 @@ Github: https://github.com/prevwong/awesome-select/
       width: 100%; }
       .awselect .front_face > .bg {
         position: absolute;
+        border-radius: 10px;
         z-index: 0;
         float: left;
         width: 100%;
@@ -651,8 +665,8 @@ Github: https://github.com/prevwong/awesome-select/
         -o-transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
         transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
         .awselect .front_face .icon svg {
-          width: 10px;
-          height: 10px; }
+          width: 15px;
+          height: 15px; }
     .awselect .back_face {
       z-index: 2;
       position: absolute;

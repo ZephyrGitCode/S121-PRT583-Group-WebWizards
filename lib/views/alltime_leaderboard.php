@@ -7,6 +7,22 @@
 }
 </style>
 <head>
+    <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
+    <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
+</head>
+<?php foreach($list as $blah){
+  $years = htmlspecialchars($blah['year'],ENT_QUOTES, 'UTF-8');
+  }
+
+  ?>
+
+<h1 style="text-align:center;"  id= "leaderboard_heading"> <?php echo"All-Time Leaderboard"?></h1>
+
+<select style="margin-bottom:20px;"id="btype" name="btype" onchange="location = this.value;" data-placeholder="Select for Yearly or Monthly leaderboard">
+    <option value="/leaderboard">Yearly Leaderboard</option>
+    <option value="/monthly_leaderboard">Monthly Leaderboard</option>
+</select></br></br>
+
 <td></td>
 <form method="post">
   <input id="searching" type="text" name="search" placeholder="search for user">
@@ -18,7 +34,7 @@ $con = get_db();
 
 if (isset($_POST["submit"])) {
 	$str = $_POST["search"];
-	$sth = $con->prepare("SELECT *,SUM(score.score)AS totalscore FROM USER,score WHERE user.fname=score.Username AND score.year = Year(CURRENT_TIMESTAMP()) And user.fname LIKE'%$str%'");
+	$sth = $con->prepare("SELECT *,SUM(score.score)AS totalscore FROM USER,score WHERE user.fname=score.Username AND user.fname LIKE'%$str%'");
 
 	$sth->setFetchMode(PDO:: FETCH_OBJ);
 	$sth -> execute();

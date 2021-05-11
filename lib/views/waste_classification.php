@@ -1,8 +1,5 @@
 <p><?php echo $message ?></p>
 <style>
-.input-icons{
-  margin-top:-60px;
-}
 .card a{
     padding: 20px;
 }
@@ -17,7 +14,7 @@
     grid-template-columns: auto auto;
 }
 #searchbutton{
-  visibility: hidden;
+  display:none;
 }
 
 </style>

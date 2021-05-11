@@ -148,7 +148,7 @@ get("/leaderboard",function($app){
    session_write_close();
    try{
       $is_authenticated = is_authenticated();
-      $app->set_message("list", leaderboard());
+      $app->set_message("list", yearly_leaderboard());
 
       if($is_authenticated == True){
          $app->render(LAYOUT,"leaderboard");
@@ -165,15 +165,15 @@ get("/leaderboard",function($app){
    } 
 });
 
-get("/january",function($app){
+get("/monthly_leaderboard",function($app){
    require MODEL;
-   $app->set_message("title","CDU WasteAware january");
+   $app->set_message("title","CDU WasteAware Monthly Leaderboard");
    session_start();
    $email = $_SESSION["email"];
    session_write_close();
    try{
       $is_authenticated = is_authenticated();
-      $app->set_message("list", january());
+      $app->set_message("list", monthly_leaderboard());
 
       if($is_authenticated == True){
          $app->render(LAYOUT,"monthly_leaderboard");
@@ -190,22 +190,22 @@ get("/january",function($app){
    } 
 });
 
-get("/february",function($app){
+get("/alltime_leaderboard",function($app){
    require MODEL;
-   $app->set_message("title","CDU WasteAware february");
+   $app->set_message("title","CDU WasteAware All-Time Leaderboard");
    session_start();
    $email = $_SESSION["email"];
    session_write_close();
    try{
       $is_authenticated = is_authenticated();
-      $app->set_message("list", february());
+      $app->set_message("list", alltime_leaderboard());
 
       if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
+         $app->render(LAYOUT,"alltime_leaderboard");
       }
       else{
          #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
+         $app->render(LAYOUT,"alltime_leaderboard");
       }
    }
    catch(Exception $e){
@@ -215,255 +215,6 @@ get("/february",function($app){
    } 
 });
 
-get("/march",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware march");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", march());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-get("/april",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware april");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", april());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-get("/may",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware may");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", may());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-get("/june",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware june");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", june());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-get("/july",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware july");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", july());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-get("/august",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware august");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", august());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-get("/september",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware september");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", september());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-get("/october",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware october");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", october());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-get("/november",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware november");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", november());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-get("/december",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware december");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", december());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
 
 
 get("/waste_classification",function($app){
@@ -565,7 +316,7 @@ get("/specialisedwaste",function($app){
    } 
 });
 
-get("/games",function($app){
+get("/activities",function($app){
    require MODEL;
    $app->set_message("title"," Specialised Waste");
    $email = $_SESSION["email"];
@@ -574,11 +325,11 @@ get("/games",function($app){
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
          $app->set_message("user", get_user($id));
-         $app->render(LAYOUT,"games");
+         $app->render(LAYOUT,"activities");
       }
       else{
          #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"games");
+         $app->render(LAYOUT,"activities");
       }
    }
    catch(Exception $e){
@@ -635,23 +386,26 @@ get("/map",function($app){
    require MODEL;
    $app->set_message("title","Map");
    $email = $_SESSION["email"];
+   $filter = "gw,com,cardpap,env";
    $id = get_user_id();
    try{
       // change to isadmin?
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
          $app->set_message("mapmarkers", mapmarkers());
+         $app->set_message("filter", $filter);
          $app->set_message("user", get_user($id));
          $app->render(LAYOUT,"map");
       }
       else{
          $app->set_message("mapmarkers", mapmarkers());
+         $app->set_message("filter", $filter);
          $app->render(LAYOUT,"map");
       }
    }
    catch(Exception $e){
       $app->set_message("message",$e->getMessage($app));
-      $app->render(LAYOUT,"signin");
+      $app->render(LAYOUT,"home");
    } 
 });
 
@@ -764,13 +518,13 @@ post("/addbin", function($app){
 
 post("/leaderboard",function($app){
    require MODEL;
-   $app->set_message("title","CDU WasteAware Leaderboard");
+   $app->set_message("title","CDU WasteAware Yearly Leaderboard");
    session_start();
    $email = $_SESSION["email"];
    session_write_close();
    try{
       $is_authenticated = is_authenticated();
-      $app->set_message("list", leaderboard());
+      $app->set_message("list", yearly_leaderboard());
 
       if($is_authenticated == True){
          $app->render(LAYOUT,"leaderboard");
@@ -787,39 +541,16 @@ post("/leaderboard",function($app){
    } 
 });
 
-post("/march",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware march");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", march());
 
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-post("/january",function($app){
+post("/monthly_leaderboard",function($app){
    require MODEL;
-   $app->set_message("title","CDU WasteAware january");
+   $app->set_message("title","CDU WasteAware Yearly Monthly Leaderboard");
    session_start();
    $email = $_SESSION["email"];
    session_write_close();
    try{
       $is_authenticated = is_authenticated();
-      $app->set_message("list", january());
+      $app->set_message("list", monthly_leaderboard());
 
       if($is_authenticated == True){
          $app->render(LAYOUT,"monthly_leaderboard");
@@ -836,272 +567,22 @@ post("/january",function($app){
    } 
 });
 
-post("/february",function($app){
+post("/alltime_leaderboard",function($app){
    require MODEL;
-   $app->set_message("title","CDU WasteAware february");
+   $app->set_message("title","CDU WasteAware All-Time Leaderboard");
    session_start();
    $email = $_SESSION["email"];
    session_write_close();
    try{
       $is_authenticated = is_authenticated();
-      $app->set_message("list", february());
+      $app->set_message("list", alltime_leaderboard());
 
       if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
+         $app->render(LAYOUT,"alltime_leaderboard");
       }
       else{
          #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/march",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware march");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", march());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/april",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware april");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", april());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/may",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware may");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", may());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/june",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware june");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", june());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/july",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware july");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", july());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/august",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware august");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", august());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/september",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware september");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", september());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/october",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware october");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", october());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/november",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware november");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", november());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->set_flash("Something wrong with the leaderboards.");
-      $app->render(LAYOUT,"home");
-   } 
-});
-
-post("/december",function($app){
-   require MODEL;
-   $app->set_message("title","CDU WasteAware december");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      $app->set_message("list", december());
-
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"monthly_leaderboard");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"monthly_leaderboard");
+         $app->render(LAYOUT,"alltime_leaderboard");
       }
    }
    catch(Exception $e){
@@ -1273,6 +754,31 @@ put("/change/:id;[\d]+",function($app){
    catch(Exception $e){
       $app->set_flash("{$e->getMessage()}");  
       $app->redirect_to("/");
+   }
+});
+
+put("/map",function($app){
+   $app->set_message("title","CDU WasteAware");
+   require MODEL;
+   try{
+      $id = get_user_id();
+      $gwc = $app->form('gwc');
+      $comc = $app->form('comc');
+      $cardpapc = $app->form('cardpapc');
+      $envc = $app->form('envc');
+      try{
+         $app->set_message("mapmarkers", mapmarkers());
+         $app->set_message("filter", $gwc.",".$comc.",".$cardpapc.",".$envc);
+         $app->render(LAYOUT,"map");  
+      }
+      catch(Exception $e){
+         $app->set_flash($e->getMessage());  
+         $app->render(LAYOUT,"map");        
+      }
+   }
+   catch(Exception $e){
+        $app->set_flash("{$e->getMessage()}");  
+        $app->render(LAYOUT,"map");
    }
 });
 
