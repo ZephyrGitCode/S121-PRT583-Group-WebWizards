@@ -456,7 +456,7 @@ input{
     }
 
     .card {
-        width: 43%;
+        min-width: 43%;
         height: 25%;
     }
 
@@ -536,11 +536,12 @@ td, th {
   
 .card, .info_card{
     color: white;
+    background-color: #232d35;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     min-width: 43%;
-    height: 150px;
+    min-height: 150px;
     margin: 20px 10px 1px 10px;
     float: none; /* Added */
     margin-bottom: 10px; /* Added */

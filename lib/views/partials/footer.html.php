@@ -4,7 +4,7 @@
     <a href="/waste_classification" style="width: 85%;"><span class="material-icons" style="font-size: 24px;">auto_delete</span><p style="margin: auto;  font-size: 12px;">Waste Class</p></a>
     <a href="/" style="width: 85%;"><span class="material-icons" style="font-size: 24px;">home</span><p style="margin: auto;  font-size: 12px;">Home</p></a>
     <a href="/leaderboard" style="width: 85%;"><span class="material-icons" style="font-size: 24px;">equalizer</span><p style="margin: auto;  font-size: 12px;">Leaderboard</p></a>
-    <a href="/games" style="width: 85%;"><span class="material-icons" style="font-size: 24px;">gamepad</span><p style="margin: auto;  font-size: 12px;">Games</p></a>
+    <a href="/activities" style="width: 85%;"><span class="material-icons" style="font-size: 24px;">gamepad</span><p style="margin: auto;  font-size: 12px;">Activities</p></a>
   </div>
 </section>
 

@@ -31,7 +31,12 @@
   </div>
 
   <div class="card" style="background-color:rgb(193, 29, 2);">
-    <a style="color:white" href="/quiz"><span class="material-icons">flaky</span>
+    <a style="color:white" href="/activities"><span class="material-icons">flaky</span>
     <p>How well do you know your waste? Quiz Time!</p></a>
+  </div>
+
+  <div class="card" style="background-color:rgb(193, 29, 2);">
+    <a style="color:white" href="/activites"><span class="material-icons" style="font-size: 24px;">gamepad</span>
+    <p>Get your recycling game face on!</p></a>
   </div>
 </div>

@@ -316,7 +316,7 @@ get("/specialisedwaste",function($app){
    } 
 });
 
-get("/games",function($app){
+get("/activities",function($app){
    require MODEL;
    $app->set_message("title"," Specialised Waste");
    $email = $_SESSION["email"];
@@ -325,11 +325,11 @@ get("/games",function($app){
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
          $app->set_message("user", get_user($id));
-         $app->render(LAYOUT,"games");
+         $app->render(LAYOUT,"activities");
       }
       else{
          #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"games");
+         $app->render(LAYOUT,"activities");
       }
    }
    catch(Exception $e){
