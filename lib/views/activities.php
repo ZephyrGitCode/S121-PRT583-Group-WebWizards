@@ -11,7 +11,7 @@
 <?php
 $user = $user[0];
 if ($user['userNo'] == ""){
-  echo "<p>Continueing as guest, <a href='/signin'>sign in</a> to earn points!</p>";
+  echo "<p>Continuing as guest, <a href='/signin'>sign in</a> to earn points!</p>";
 }else{
   ?>
   <p style="text-align: center;">Your Score: <?php echo $user['totalscore'];?></p>
@@ -35,7 +35,7 @@ if ($user['userNo'] == ""){
   <div class="card-body">
     <h5 class="card-title">Quizes</h5>
     <p class="card-text">How many can you land?</p>
-    <a href="/quiz" class="btn btn-primary">Recycling Game!</a>
+    <a href="/game/1" class="btn btn-primary">Recycling Game!</a>
   </div>
 </div>
 
