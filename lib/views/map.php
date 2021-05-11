@@ -55,6 +55,55 @@ if (EMPTY($filter) == 0){
 <div class="mapbtns">
   <button class="btn btn-primary mapbtn" id='findme'>Find me!</button>
   <button class="btn btn-primary mapbtn" id='centercdu'>CDU Center</button>
+
+  <?php
+  $user = $user[0];
+  // if user is not empty
+  if(!empty($user) && $user['isadmin'] == 1){
+  ?>
+  <form action="/addbin" method='post'>
+    <input type='hidden' name='_method' value='post' />
+    <p class="acctext">Bin Position:</p>
+    <div class="inputBox">
+        <input type="text" name="latlng" id="latlng">
+    </div>
+    <input type="hidden" id="latValue" name="latValue" value="" />
+    <input type="hidden" id="lngValue" name="lngValue" value="" />
+    <br/>
+    <select id="btype" name="btype" data-placeholder="Select a bin Type">
+      <option value="gw">General Waste</option>
+      <option value="com">Co-mingled</option>
+      <option value="cardpap">Cardboard And Paper</option>
+      <option value="env">Enviro-Collective</option>
+    </select>
+    
+    <select id="bcolour" name="bcolour" data-placeholder="Select a building colour">
+      <option value="Red">Red</option>
+      <option value="Orange">Orange</option>
+      <option value="Green">Green</option>
+      <option value="Blue">Blue</option>
+      <option value="Yellow">Yellow</option>
+      <option value="Pink">Pink</option>
+      <option value="Purple">Purple</option>
+      <option value="Brown">Brown</option>
+    </select>
+
+ 
+    <select id="bnum" name="bnum" data-placeholder="Select a building number">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+    <br/>
+    <input type="submit" name="submit" value="Add Single Bin">
+  </form>
+  <?php
+  }
+  ?>
+
   <div class="maplegend">
     <form action="/map" method='post'>
       <input type='hidden' name='_method' value='put' />
@@ -87,55 +136,6 @@ if (EMPTY($filter) == 0){
     </form>
   </div>
 </div>
-
-<?php
-$user = $user[0];
-// if user is not empty
-if(!empty($user) && $user['isadmin'] == 1){
-?>
-<form action="/addbin" method='post'>
-  <input type='hidden' name='_method' value='post' />
-
-  <p class="acctext">Bin Position:</p>
-  <div class="inputBox">
-      <input type="text" name="latlng" id="latlng">
-  </div>
- 
-  <select id="btype" name="btype" data-placeholder="Select a bin Type">
-    <option value="gw">General Waste</option>
-    <option value="com">Co-mingled</option>
-    <option value="cardpap">Cardboard And Paper</option>
-    <option value="env">Enviro-Collective</option>
-  </select>
-
-  <select id="bcolour" name="bcolour" data-placeholder="Select a building colour">
-    <option value="Red">Red</option>
-    <option value="Orange">Orange</option>
-    <option value="Green">Green</option>
-    <option value="Blue">Blue</option>
-    <option value="Yellow">Yellow</option>
-    <option value="Pink">Pink</option>
-    <option value="Purple">Purple</option>
-    <option value="Brown">Brown</option>
-  </select>
-
-  <input type="hidden" id="latValue" name="latValue" value="" />
-  <input type="hidden" id="lngValue" name="lngValue" value="" />
-
-  <select id="bnum" name="bnum" data-placeholder="Select a building number">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-  </select>
-  <br/>
-  <input type="submit" name="submit" value="Add Single Bin">
-</form>
-<?php
-}
-?>
 
 <br/>
 <br/>

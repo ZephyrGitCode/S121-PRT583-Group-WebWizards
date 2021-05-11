@@ -436,7 +436,6 @@ input{
 /* home cards */
 .card{
     color: white;
-    width: calc(25% - 20px);
     padding: 10px;
     border-radius: 10px;
     min-width: 50%;
@@ -447,6 +446,10 @@ input{
     -webkit-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
     -moz-box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
     box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
+}
+
+#small-card {
+  width: calc(25% - 20px);
 }
   
 @media screen and (max-width: 480px) {
@@ -602,6 +605,7 @@ Github: https://github.com/prevwong/awesome-select/
     width: 100%;
     position: relative;
     cursor: pointer;
+    margin-bottom: 10px;
     border-radius: 10px;
     -webkit-transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     -moz-transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
