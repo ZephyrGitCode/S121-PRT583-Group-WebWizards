@@ -8,7 +8,7 @@ if ($_SESSION['userno'] != ""){$userno = $_SESSION['userno'];}?>
 </style>
 <header class="navbar">
   <!--<span style="font-size:30px;cursor:pointer;color:white" onclick="openNav()">&#9776;</span>-->
-  <a href="/"><span><img src="https://cdn.pixabay.com/photo/2013/07/12/14/28/bin-148264_960_720.png" width="50px" height="50px"></span></a>
+  <!--a href="/"><span><img src="https://cdn.pixabay.com/photo/2013/07/12/14/28/bin-148264_960_720.png" width="50px" height="50px"></span></a-->
   <h2 class="main-h2">CDU WasteAware</h2>
   <a href="<?php if ($userno != ""){echo "/myaccount/{$userno}";}else{echo "/myaccount/123";}?>"><span class="material-icons" style="font-size:32px;color:<?php if ($userno != ""){echo "#fff";}else{echo "#b6b1a6";}?>;">account_circle</span></a>
   <!--

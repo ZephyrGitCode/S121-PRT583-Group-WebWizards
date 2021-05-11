@@ -33,10 +33,24 @@ if (EMPTY($filter) == 0){
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-    <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
-    <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
+  <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
+  <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
+  <link rel="stylesheet" type="text/css" href="../lib/views/css/popupstyle.css">
 </head>
-<p>Select a bin for more information</p>
+
+<!--Pop up information start-->
+<a href="#mapPopUp"><img width="40px" height="40px" src="../lib/views/images/popupinforicon.png"></a>
+<div id="mapPopUp" class="mapPopUpOverlay">
+      <a class="mapPopupOutClose" href="#"></a>
+      <div class="mapPopUpMain">
+        <h2 style="color:black">Map information title</h2>
+        <a class="mapPopUpClose" href="#">&times;</a>
+        <div class="mapPopUpContent">
+          <p style="color:black">map information content</p>
+        </div>
+      </div>
+    </div>
+<!--pop up information end-->
 <div id="map" style="z-index:1;height:400px;color:black;"></div>
 <div class="mapbtns">
   <button class="btn btn-primary mapbtn" id='findme'>Find me!</button>
