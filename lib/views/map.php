@@ -1,6 +1,9 @@
 <p><?php echo $message;?></p>
 <?php
-
+  $gwc = false;
+  $comc = false;
+  $cardpapc = false;
+  $envc = false;
 if (EMPTY($filter) == 0){
   if (strstr($filter, "gw")){
     $gwc = true;
@@ -20,9 +23,7 @@ if (EMPTY($filter) == 0){
   $cardpapc = true;
   $envc = true;
 }
-
 ?>
-
 
 <!--<iframe src="https://i.simmer.io/@Henrylllll/cdu-waste-management-map" style="width:350px;height:600px;border:0"></iframe>-->
 <head>
@@ -276,7 +277,8 @@ if(!empty($mapmarkers)){
       var search = filter.search(type);
       var check1 = "<?php echo $gwc ?>"
       var check2 = "<?php echo $comc ?>"
-      if (search >= 0){
+      console.log(check1+" "+check2+" "+type);
+      if (search >= 0 || (check1 == true || check2==true && type=="gwcom")){
         if (lat != ""){
         console.log(lat+" "+long);
         var loc = new L.LatLng(lat, long);

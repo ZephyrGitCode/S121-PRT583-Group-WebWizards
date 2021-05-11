@@ -405,7 +405,7 @@ get("/map",function($app){
    }
    catch(Exception $e){
       $app->set_message("message",$e->getMessage($app));
-      $app->render(LAYOUT,"signin");
+      $app->render(LAYOUT,"home");
    } 
 });
 
