@@ -9,6 +9,12 @@ box-shadow: 9px 11px 13px 2px rgba(0,0,0,0.54);
 
 </style>
 <div class="input-icons">
+  <div class="card" style="background-color:rgb(60, 179, 113);">
+    <a style="color:white" href="/map"><h2><span class="glyphicon glyphicon-map-marker"></span></h2>
+    <p>Information on waste management</p></a>
+  </div>
+
+<div class="input-icons">
   <div class="card" style="background-color:rgb(207, 41, 91);">
     <a style="color:white" href="/map"><h2><span class="glyphicon glyphicon-map-marker"></span></h2>
     <p>Want to find the nearest Bin? Go Here!</p></a>
