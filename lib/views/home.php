@@ -30,13 +30,8 @@
     <p>Who's toping the charts? Leaderboard</p></a>
   </div>
 
-  <div class="card" id="small-card" style="background-color:rgb(193, 29, 2);">
-    <a style="color:white" href="/activities"><span class="material-icons">flaky</span>
-    <p>How well do you know your waste? Quiz Time!</p></a>
-  </div>
-
-  <div class="card" id="small-card" style="background-color:rgb(193, 29, 2);">
-    <a style="color:white" href="/activities"><span class="material-icons" style="font-size: 24px;">gamepad</span>
-    <p>Get your recycling game face on!</p></a>
+  <div class="card" style="background-color:rgb(193, 29, 2); width:92%;">
+    <a style="color:white" href="/activities"><span class="material-icons">flaky</span> <span class="material-icons" style="font-size: 24px;">gamepad</span>
+    <p style="left: 10;">Activities!</p><p>Get your recycling game face on!</p></a>
   </div>
 </div>

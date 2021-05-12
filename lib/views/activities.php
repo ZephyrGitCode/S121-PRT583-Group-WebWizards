@@ -1,8 +1,11 @@
 <style>
 .card img{
-    margin-left: -10px;
-    text-align: center;
-    padding: 10px;
+  text-align: center;
+  padding: 10px;
+  margin: auto;
+}
+.btn {
+  font-size: 14px;
 }
 </style>
 
@@ -20,22 +23,22 @@ if ($user['userNo'] == ""){
 ?>
 <h2>Start earning points from an activity below!</h2>
 
-<div class="card" style="width: 18rem; background-color:rgb(153, 29, 2);">
-  <img class="card-img-top" src="lib/views/images/Paper-Toss.jpg" alt="Card image cap" width="150px" height="150px" style="border-radius:20px;">
+<div class="card" style="background-color:rgb(153, 29, 2);">
+  <img class="" src="lib/views/images/Paper-Toss.jpg" alt="Card image cap" width="100px" height="100px" style="border-radius:20px;">
   <div class="card-body">
-    <h5 class="card-title">Quizes</h5>
+    <h3 class="card-title">Quizes</h3>
     <p class="card-text">Do you know where all the items belong?</p>
     <a href="/quiz" class="btn btn-primary">Quiz Time!</a>
   </div>
 </div>
 
 
-<div class="card" style="width: 18rem; background-color:rgb(153, 29, 2);">
-  <img class="card-img-top" src="lib/views/images/Paper-Toss.jpg" alt="Card image cap" width="150px" height="150px" style="border-radius:20px;">
+<div class="card" style="background-color:rgb(153, 29, 2);">
+  <img class="" src="lib/views/images/Paper-Toss.jpg" alt="Card image cap" width="150px" height="150px" style="border-radius:20px;">
   <div class="card-body">
-    <h5 class="card-title">Quizes</h5>
+    <h3 class="card-title">Paper Toss</h3>
     <p class="card-text">How many can you land?</p>
-    <a href="/game/1" class="btn btn-primary">Recycling Game!</a>
+    <a href="/game/1" class="btn btn-primary">Paper Toss!</a>
   </div>
 </div>
 
