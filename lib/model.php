@@ -370,7 +370,7 @@ function yearly_leaderboard(){
    session_start();
    try{
      $db = get_db();
-     $query = "SELECT user.fname,user.lname, SUM(score.score),score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.year = YEAR(CURRENT_TIMESTAMP()) GROUP BY user.fname ORDER BY SUM(score.score) DESC";
+     $query = "SELECT user.fname,user.lname, SUM(score.score),score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.year = YEAR(CURRENT_TIMESTAMP()) GROUP BY user.fname ORDER BY SUM(score.score) DESC LIMIT 10";
      $statement = $db->prepare($query);
      $statement -> execute();
      $list = $statement->fetchall(PDO::FETCH_ASSOC);
@@ -385,7 +385,7 @@ function alltime_leaderboard(){
    session_start();
    try{
      $db = get_db();
-     $query = "SELECT user.fname,user.lname, SUM(score.score),score.year FROM USER, SCORE WHERE user.fname = score.Username GROUP BY user.fname ORDER BY SUM(score.score) DESC";
+     $query = "SELECT user.fname,user.lname, SUM(score.score),score.year FROM USER, SCORE WHERE user.fname = score.Username GROUP BY user.fname ORDER BY SUM(score.score) DESC LIMIT 10";
      $statement = $db->prepare($query);
      $statement -> execute();
      $list = $statement->fetchall(PDO::FETCH_ASSOC);
@@ -422,7 +422,7 @@ function monthly_leaderboard(){
    session_start();
    try{
      $db = get_db();
-     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = MONTHNAME(CURRENT_TIMESTAMP ()) ORDER BY score.score DESC";
+     $query = "SELECT user.fname, user.lname,score.score, score.month, score.year FROM USER, SCORE WHERE user.fname = score.Username AND score.month = MONTHNAME(CURRENT_TIMESTAMP ()) ORDER BY score.score DESC LIMIT 10";
      $statement = $db->prepare($query);
      $statement -> execute();
      $list = $statement->fetchall(PDO::FETCH_ASSOC);

@@ -36,7 +36,7 @@
   </div>
 
   <div class="card" id="small-card" style="background-color:rgb(193, 29, 2);">
-    <a style="color:white" href="/activites"><span class="material-icons" style="font-size: 24px;">gamepad</span>
+    <a style="color:white" href="/activities"><span class="material-icons" style="font-size: 24px;">gamepad</span>
     <p>Get your recycling game face on!</p></a>
   </div>
 </div>
