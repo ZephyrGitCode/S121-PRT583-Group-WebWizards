@@ -35,21 +35,14 @@ if (EMPTY($filter) == 0){
     crossorigin=""></script>
   <script type="text/javascript" src="../lib/views/css/dropdowns/jquery.js"></script>
   <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
-  <link rel="stylesheet" type="text/css" href="../lib/views/css/popupstyle.css">
 </head>
 
-<!--Pop up information start-->
-<a href="#mapPopUp"><img width="40px" height="40px" src="../lib/views/images/popupinforicon.png"></a>
-<div id="mapPopUp" class="mapPopUpOverlay">
-      <a class="mapPopupOutClose" href="#"></a>
-      <div class="mapPopUpMain">
-        <h2 style="color:black">Map information title</h2>
-        <a class="mapPopUpClose" href="#">&times;</a>
-        <div class="mapPopUpContent">
-          <p style="color:black">map information content</p>
-        </div>
-      </div>
-    </div>
+<style>
+[class^=ckbx-] input[type=checkbox] {
+  position: unset;
+}
+</style>
+
 <!--pop up information end-->
 <div id="map" style="z-index:1;height:400px;color:black;"></div>
 <div class="mapbtns">
@@ -63,7 +56,7 @@ if (EMPTY($filter) == 0){
   ?>
   <form action="/addbin" method='post'>
     <input type='hidden' name='_method' value='post' />
-    <p class="acctext">Bin Position:</p>
+    <p class="acctext">Bin Position: (please select somewhere on the map to save coordinates)</p>
     <div class="inputBox">
         <input type="text" name="latlng" id="latlng">
     </div>
@@ -73,6 +66,7 @@ if (EMPTY($filter) == 0){
     <select id="btype" name="btype" data-placeholder="Select a bin Type">
       <option value="gw">General Waste</option>
       <option value="com">Co-mingled</option>
+      <option value="gwcom">General Waste + Co-mingled</option>
       <option value="cardpap">Cardboard And Paper</option>
       <option value="env">Enviro-Collective</option>
     </select>
@@ -96,6 +90,16 @@ if (EMPTY($filter) == 0){
       <option value="4">4</option>
       <option value="5">5</option>
       <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
     </select>
     <br/>
     <input type="submit" name="submit" value="Add Single Bin">
@@ -118,7 +122,12 @@ if (EMPTY($filter) == 0){
           <tr>
             <td><img src="../lib/views/images/com.png" width="40px;" height="40px;"/></td>
             <td>Yellow Co-mingled</td>
-            <td><input name="comc" type="checkbox" id="toggle" value="com" <?php if ($comc){ echo "checked"; }?>></td>
+            <td>
+              <div class="ckbx-style-8">
+                <input type="checkbox" id="ckbx-style-8-1" id="toggle" value="com" name="comc" <?php if ($comc){ echo "checked"; }?>>
+                <label for="ckbx-style-8-1"></label>
+              </div>
+            </td>
           </tr>
           <tr>
             <td><img src="../lib/views/images/cardpap.png" width="40px;" height="40px;"/></td>

@@ -12,6 +12,9 @@
     <link rel="stylesheet" type="text/css" href="/lib/views/css/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/lib/views/css/bootstrap.css">
     <link rel="stylesheet" href="/lib/views/css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="/lib/views/css/popupstyle.css">
+    <link rel="stylesheet" href="/lib/views/css/checkboxes.min.css">
+    
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -44,5 +47,10 @@
     require PARTIALS."/footer.html.php";
     require PARTIALS."/navscript.html.php";
     ?>
+    <script>
+    if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
   </body>
 </html>

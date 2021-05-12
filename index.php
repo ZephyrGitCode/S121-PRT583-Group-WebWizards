@@ -318,7 +318,7 @@ get("/specialisedwaste",function($app){
 
 get("/activities",function($app){
    require MODEL;
-   $app->set_message("title"," Specialised Waste");
+   $app->set_message("title"," Activities");
    $email = $_SESSION["email"];
    $id = get_user_id();
    try{
@@ -478,6 +478,7 @@ get("/quiz3",function($app){
 
 post("/addbin", function($app){
    require MODEL;
+   $id = get_user_id();
    try{
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
@@ -490,29 +491,33 @@ post("/addbin", function($app){
          if($latlng && $btype && $bcolour && $bnum){
             try{
               addbin($bcolour,$bnum,$btype,$lat, $lng);
-              $app->set_flash("Bin ".$bcolour." ".$btype." added at building number ".$bnum." location: ".$latlng); 
+              $app->set_message("user", get_user($id));
+              $app->set_flash("Bin ".$bcolour." ".$btype." added at building number ".$bnum);
+              $app->set_message("mapmarkers", mapmarkers());
               $app->render(LAYOUT,"map");  
            }
            catch(Exception $e){
-                $app->set_flash($e->getMessage());  
+                $app->set_flash($e->getMessage());
                 $app->redirect_to("map");          
            }
         }
         else{
-           $app->set_flash("You are not signed up. Try again and don't leave any fields blank.");  
-           $app->redirect_to("map");
+           $app->set_flash("Complete all entry fields to add a new bin.");  
+           $app->set_message("mapmarkers", mapmarkers());
+           $app->render(LAYOUT,"map");
         }
 
       }
       else{
          $app->set_flash("You are not authorized to add bin locations");
+         $app->set_message("mapmarkers", mapmarkers());
          $app->render(LAYOUT,"map");
       }
    }
    catch(Exception $e){
       $app->set_message("message",$e->getMessage($app));
       $app->set_flash("Something wrong with the Maps.");
-      $app->render(LAYOUT,"map");
+      $app->redirect_to("home");
    } 
 });
 
