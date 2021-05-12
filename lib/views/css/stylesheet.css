@@ -364,32 +364,6 @@ input{
     text-align: center;
   }
   
-  nav ul{
-    padding:0;
-  }
-  
-  nav li{
-    list-style-type: none;
-    float:left;
-    margin: 0 0 1.2em 0;
-  }
-  
-  nav a{
-    font-size:0.8em;
-    text-decoration:none;
-    margin: 0 1em 0 0;
-    background: #ddd;
-    padding: 0.5em 1em 0.5em 1em;
-    border-radius: 3px 3px 0 0;
-    color:#008;
-  }
-
-  .nav2 {
-    display:grid;
-    grid-template-columns: auto auto;
-
-  }
-  
   input{
     display:block;
     margin-bottom:0.3em;
@@ -397,6 +371,15 @@ input{
   
   input[type=submit]{
     margin-top: 1em;
+  }
+  
+  .breadcrumb {
+    background-color: #232d35;
+    color: white;
+  }
+
+  .breadcrumb-item a{
+    color: #5c5cff;
   }
 
 /* footer navigation Start CDU: foreground: #007a87 background: #211545*/
@@ -561,20 +544,27 @@ td, th {
   /* Leaderboard end */
 
 /* map */
-.mapbtns{
+.mapbtns {
   text-align: center;
   padding-top: 10px;
 }
 
-.mapbtn{
+.mapbtn {
   width: 48%;
   height: 40px;
   font-size: large;
 }
 
-.maplegend{
+.maplegend {
   text-align: left;
   margin-top: 10px;
+}
+
+.mapsubmit {
+  background: #15a597;
+  width: 60%;
+  margin: auto;
+  color: #232d35;
 }
 /* map end */
 

@@ -102,7 +102,7 @@ if (EMPTY($filter) == 0){
       <option value="16">16</option>
     </select>
     <br/>
-    <input type="submit" name="submit" value="Add Single Bin">
+    <input type="submit" class="mapsubmit" name="submit" value="Add Single Bin">
   </form>
   <?php
   }
@@ -117,31 +117,46 @@ if (EMPTY($filter) == 0){
           <tr>
             <td><img src="../lib/views/images/gw.png" width="40px;" height="40px;"/></td>
             <td>Red General Waste</td>
-            <td><input name="gwc" type="checkbox" id="toggle" value="gw" <?php if ($gwc){ echo "checked"; }?>></td>
+            <td>
+              <div class="ckbx-style-8">
+                <input type="checkbox" id="ckbx-style-8-1" id="toggle" value="gw" name="gwc" <?php if ($gwc){ echo "checked"; }?>>
+                <label for="ckbx-style-8-1"></label>
+              </div>
+            </td>
           </tr>
           <tr>
             <td><img src="../lib/views/images/com.png" width="40px;" height="40px;"/></td>
             <td>Yellow Co-mingled</td>
             <td>
               <div class="ckbx-style-8">
-                <input type="checkbox" id="ckbx-style-8-1" id="toggle" value="com" name="comc" <?php if ($comc){ echo "checked"; }?>>
-                <label for="ckbx-style-8-1"></label>
+                <input type="checkbox" id="ckbx-style-8-2" id="toggle" value="com" name="comc" <?php if ($comc){ echo "checked"; }?>>
+                <label for="ckbx-style-8-2"></label>
               </div>
             </td>
           </tr>
           <tr>
             <td><img src="../lib/views/images/cardpap.png" width="40px;" height="40px;"/></td>
             <td>Cardboard And Paper</td>
-            <td><input name="cardpapc" type="checkbox" id="toggle" value="cardpap" <?php if ($cardpapc){ echo "checked"; }?>></td>
+            <td>
+              <div class="ckbx-style-8">
+                <input type="checkbox" id="ckbx-style-8-3" id="toggle" value="cardpap" name="cardpapc" <?php if ($cardpapc){ echo "checked"; }?>>
+                <label for="ckbx-style-8-3"></label>
+              </div>
+            </td>
           </tr>
           <tr>
             <td><img src="../lib/views/images/green2.png" width="40px;" height="40px;"/></td>
             <td>Enviro-Collective</td>
-            <td><input name="envc" type="checkbox" value="env" <?php if ($envc){ echo "checked"; }?>></td>
+            <td>
+              <div class="ckbx-style-8">
+                <input type="checkbox" id="ckbx-style-8-4" id="toggle" value="env" name="envc" <?php if ($envc){ echo "checked"; }?>>
+                <label for="ckbx-style-8-4"></label>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
-      <input type="submit" name="" value="Save">
+      <input type="submit" name="submit" class="mapsubmit" value="Filter">
     </form>
   </div>
 </div>
@@ -157,27 +172,13 @@ $(document).ready(function(){
      $("select").awselect();
 });
 
-
-
-/*
-document.getElementById('btype').addEventListener('change', updateinputbtype);
-
-function updateinputbtype(evt) {
-  var x = document.getElementById("btype");
-  console.log(x.value);
-  document.getElementByName(id).value=x.value;
-}
-*/
-
 function updateinputbnum(evt) {
   var x = document.getElementById("bnum");
-  console.log(x.value);
   document.getElementByName(id).value=x.value;
 }
 
 function updateinputfilter(evt) {
   var x = document.getElementById("bnum");
-  console.log(x.value);
   document.getElementByName(id).value=x.value;
 }
 
@@ -203,7 +204,6 @@ function addMarker(latlng, msg="",icon = "") {
       icon: icon
     }
   }
-
   try {
     var marker = new L.Marker(latlng,markerOptions);
     marker.bindPopup(msg).openPopup();
@@ -261,12 +261,11 @@ if("geolocation" in navigator)
 
 }
 navigator.geolocation.getCurrentPosition(
-    function(position) {
-        console.log(position);
-        console.log('latitude: ${position.coords.latitude}, longitude:${position.coords.longitude}');
-        var loc = new L.LatLng(position.coords.latitude, position.coords.longitude);
-        addMarker(loc,"You are here");
-    }
+  function(position) {
+    console.log('latitude: ${position.coords.latitude}, longitude:${position.coords.longitude}');
+    var loc = new L.LatLng(position.coords.latitude, position.coords.longitude);
+    addMarker(loc,"You are here");
+  }
 )
 
 $('#findme').on('click', function() {
@@ -298,12 +297,10 @@ if(!empty($mapmarkers)){
       var type = "<?php echo $type ?>";
       var filter = "<?php echo $filter ?>";
       var search = filter.search(type);
-      var check1 = "<?php echo $gwc ?>"
-      var check2 = "<?php echo $comc ?>"
-      console.log(check1+" "+check2+" "+type);
+      var check1 = "<?php echo $gwc ?>";
+      var check2 = "<?php echo $comc ?>";
       if (search >= 0 || (check1 == true || check2==true && type=="gwcom")){
         if (lat != ""){
-        console.log(lat+" "+long);
         var loc = new L.LatLng(lat, long);
         switch(type)
         {

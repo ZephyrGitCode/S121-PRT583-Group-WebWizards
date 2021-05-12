@@ -16,7 +16,14 @@
 
   ?>
 
-  <h1 style="text-align:center;"  id= "leaderboard_heading"> <?php echo"Leaderboard - $years"?></h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Leader baord</li>
+  </ol>
+</nav>
+
+<h1 style="text-align:center;"  id= "leaderboard_heading"> <?php echo"Leaderboard - $years"?></h1>
 
  <select id="btype" name="btype" onchange="location = this.value;" data-placeholder="Select for All-Time or Yearly leaderboard">
     <option value="/alltime_leaderboard">All-Time Leaderboard</option>

@@ -11,6 +11,13 @@
 
 <p><?php echo $message ?></p>
 
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Activities</li>
+  </ol>
+</nav>
+
 <?php
 $user = $user[0];
 if ($user['userNo'] == ""){
@@ -23,8 +30,8 @@ if ($user['userNo'] == ""){
 ?>
 <h2>Start earning points from an activity below!</h2>
 
-<div class="card" style="background-color:rgb(153, 29, 2);">
-  <img class="" src="lib/views/images/Paper-Toss.jpg" alt="Card image cap" width="100px" height="100px" style="border-radius:20px;">
+<div class="card" style="background-color:#232d35;">
+  <img class="" src="lib/views/images/Paper-Toss.jpg" alt="Card image cap" width="150px" height="150px" style="border-radius:20px;">
   <div class="card-body">
     <h3 class="card-title">Quizes</h3>
     <p class="card-text">Do you know where all the items belong?</p>
@@ -32,8 +39,7 @@ if ($user['userNo'] == ""){
   </div>
 </div>
 
-
-<div class="card" style="background-color:rgb(153, 29, 2);">
+<div class="card" style="background-color:#232d35;">
   <img class="" src="lib/views/images/Paper-Toss.jpg" alt="Card image cap" width="150px" height="150px" style="border-radius:20px;">
   <div class="card-body">
     <h3 class="card-title">Paper Toss</h3>

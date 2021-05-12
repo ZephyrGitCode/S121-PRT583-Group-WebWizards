@@ -10,7 +10,13 @@
 }
 </style>
 
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/waste_classification">Waste Classification</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Co-mingled Waste</li>
+  </ol>
+</nav>
 
 <h2 style="text-align: center; padding: 10px;">Co-mingle Recyclable Waste Materials</h2>
 <div class="input-icons">
