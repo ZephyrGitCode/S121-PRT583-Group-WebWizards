@@ -14,7 +14,7 @@
     <p>Want to find the nearest Bin? Go Here!</p></a>
   </div>
 
-  <div class="card" id="small-card" style="background-color:rgb(214, 204, 7);">
+  <div class="card" id="small-card" style="background-color:rgb(154 147 0);">
     <a style="color:white" href="/waste_classification">
     <h2><span class="glyphicon glyphicon-trash"></span></h2>
     <p>Where's that item go? Waste Classification</p></a>

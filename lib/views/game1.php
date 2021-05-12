@@ -19,6 +19,14 @@
 
 	}
 </style>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/activities">Activities</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Paper Toss</li>
+  </ol>
+</nav>
+
 <h2>Recycling Game</h2>
 <p>Instructions: Drag the paper to shoot the paper into the bin!<p>
 
