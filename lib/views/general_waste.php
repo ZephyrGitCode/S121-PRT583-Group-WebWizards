@@ -46,16 +46,6 @@
             </div>
 
             <div class="card" style="background-color:#8B0000;">
-            <h3 style="color:white"><img src="lib/views/images/paper-towel.jpg"/>
-            Food scraps</h3><p>Tissues, napkins and paper towels should be disposed in the general bins</p>
-            </div>
-
-            <div class="card" style="background-color:#8B0000;">
-            <h3 style="color:white"><img src="lib/views/images/straw.jpg"/>
-            Food scraps</h3><p>Disposable utensils and straws should be disposed in the general bins</p>
-            </div>
-
-            <div class="card" style="background-color:#8B0000;">
               <h3 style="color:white"><img src="lib/views/images/brokenglass.jpg"/>
               Broken glass</h3><p>Broken glass should be placed in the general bin (make sure its wrapped to prevent injuries)</p>
             </div>

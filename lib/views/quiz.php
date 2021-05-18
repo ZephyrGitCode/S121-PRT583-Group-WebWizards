@@ -1,134 +1,141 @@
 
-<style media="screen">
-  h5, h3, #scan{
+<style>
+  h2, h3, #test_status, #completion{
     text-align: center;
+    padding:10px;
   }
-
-.center, .mainimg3{
-margin: auto;
-width: 50%;
+  h2{
+    margin-top:-20px;
+  }
+#green{
+  width:20%;
 }
-
-#toggle, #toggle2, #toggle3, #toggle4, #toggle5, #toggle6, #toggle7, #toggle8, #toggle9{
-  visibility: hidden;
-  opacity: 0;
-  position: relative;
-  z-index: 3;
-}
-
-#toggle:checked ~ dialog, #toggle2:checked ~ dialog, #toggle3:checked ~ dialog , #toggle4:checked ~ dialog ,
-#toggle5:checked ~ dialog , #toggle6:checked ~ dialog , #toggle7:checked ~ dialog , #toggle8:checked ~ dialog , #toggle9:checked ~ dialog   {
-  display: block;
-  z-index: 3;
-}
-
-#choice li{
-  display: inline-block;
-  text-align: center;
-  width: 100px;
-
-}
-
-ul#choice{
-  padding-left: 0px;
-}
-
-li {
-  float: left;
-  padding: 0px;
-}
-.correct{
-  background-color: green;
-}
-
-.incorrect{
-  background-color: red;
-}
-
-
 .mainimg3{
-  width: 100%;
+text-align:center;
+width: 330px;
+height:250px;
 }
 
-li img{
-  width: 60%;
+#test{
+  text align:center;
+  display:grid;
+  grid-template-columns:auto auto auto;
 }
-a{
-  color: white;
-}
-
-.desc_activity1 ul{
-margin-top:10px;
-margin-left:auto;
-margin-right:auto;
-display: grid;
-grid-template-columns: auto auto auto;  
-
+#test img{
+width:100px;
+padding:10px;
 }
 
-</style>
+    </style>
 
 
-<link rel="stylesheet" type="text/css" href="../lib/views/css/lightbox.min.css">
-<script src ="..lib/views/css/lightbox.min.js" type="text/javascript"></script>
+    <h2 id="test_status"></h2>
+    <div id="test"></div>
+    <div id="completion"></div>
 
- <div class="main_content">
-   <div class="container">
-     <div class="progress">
-       <div class="progress-bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width:33%">
-         <span class="sr-only">33% Complete</span>
-       </div>
-     </div>
-   </div>
+<script>
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, chE, chF, correct = 0;
+// this is a multidimensional array with 4 inner array elements with 5 elements inside them
+var questions = [
+  {
+      question: "../lib/views/images/coke.jpg",
+      a: "Recycle",
+      b:"../lib/views/images/green2.png",
+      c: "General",
+      d:"../lib/views/images/red.png",
+      e: "Comingled",
+      f:"../lib/views/images/yellow.png",
+      answer: "A"
+    },
+  {
+      question: "../lib/views/images/bannana.jpg",
+      a: "Recycle",
+      b:"../lib/views/images/green2.png",
+      c: "General",
+      d:"../lib/views/images/red.png",
+      e: "Comingled",
+      f:"../lib/views/images/yellow.png",
+      answer: "B"
+    },
+  {
+      question: "../lib/views/images/battery.jpg",
+      a: "Recycle",
+      b:"../lib/views/images/green2.png",
+      c: "General",
+      d:"../lib/views/images/red.png",
+      e: "Comingled",
+      f:"../lib/views/images/yellow.png",
+      answer: "C"
+    },
+  {
+      question: "../lib/views/images/cardboard.jpg",
+      a: "Recycle",
+      b:"../lib/views/images/green2.png",
+      c: "General",
+      d:"../lib/views/images/red.png",
+      e: "Comingled",
+      f:"../lib/views/images/yellow.png",
+      answer: "A"
+    }
+  ];
+// this get function is short for the getElementById function  
+function get(x){
+  return document.getElementById(x);
+}
+// this function renders a question for display on the page
+function renderQuestion(){
+  test = get("test");
+  if(pos >= questions.length){
+    test.innerHTML = "<h3>You got "+correct+" of "+questions.length+" questions correct</h3>";
+    get("test_status").innerHTML = "</h2>Test completed</h2>";
+    if(correct < questions.length){
+      get("completion").innerHTML ="<p>You earned "+correct+" points </br> Have a look at the Waste classfication to improve your knowledge on waste disposal</p><form action='/quiz' method='POST'><input type='hidden' name='_method' value='put' /><input type='hidden' name='quiz' value="+correct+"><input type='submit' value='Click to add points to leaderboard'></form>"
+    }else{
+      get("completion").innerHTML ="<p>You earned "+correct+" points</p><form action='/quiz' method='POST'><input type='hidden' name='_method' value='put' /><input type='hidden' name='quiz' value="+correct+"><input type='submit' value='Click to add points to leaderboard'></form>"
+    }
+    // resets the variable to allow users to restart the test
+    pos = 0;
+    correct = 0;
+    // stops rest of renderQuestion function running when test is completed
+    return false;
+  }
+  get("test_status").innerHTML = "Examine the photo and click the correct waste category</br><h3>Question "+(pos+1)+" of "+questions.length+"</h3>";
+  
+  question = questions[pos].question;
+  chA = questions[pos].a;
+  chB = questions[pos].b;
+  chC = questions[pos].c;
+  chD = questions[pos].d;
+  chE = questions[pos].e;
+  chF = questions[pos].f;
+  // display the question
+  get("test_status").innerHTML += "<img class='mainimg3'  src="+question+">";
+  // display the answer options
+  // the += appends to the data we started on the line above
+  test.innerHTML = "<label><input id='toggle' type='radio' name='choices' value='A'>&nbsp&nbsp<img src="+chB+ " id ='green' name='choices' value='A'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+chA+"</label>";
+  test.innerHTML += "<label><input id='toggle' type='radio' name='choices' value='B'>&nbsp&nbsp<img src="+chD+ " id ='green' name='choices' value='B'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+chC+"</label>";
+  test.innerHTML += "<label><input id='toggle' type='radio' name='choices' value='C'>&nbsp&nbsp<img src="+chF+ " id ='green' name='choices' value='C'/>&nbsp&nbsp"+chE+"</label>";
+  test.innerHTML += "<button style='color:black' onclick='checkAnswer()'>Submit Answer</button>";
+}
+function checkAnswer(){
+  // use getElementsByName because we have an array which it will loop through
+  choices = document.getElementsByName("choices");
+  for(var i=0; i<choices.length; i++){
+    if(choices[i].checked){
+      choice = choices[i].value;
+    }
+  }
+  // checks if answer matches the correct choice
+  if(choice == questions[pos].answer){
+    //each time there is a correct answer this value increases
+    correct++;
+  }
+  // changes position of which character user is on
+  pos++;
+  // then the renderQuestion function runs again to go to next question
+  renderQuestion();
+}
+// Add event listener to call renderQuestion on page load event
+window.addEventListener("load", renderQuestion);
 
-<div class="desc_activity">
-      <h2>Examine the photo and click the correct waste category </h2>
-
-</div>
-  <div class="desc_activity">
-    <a href="../lib/views/images/coke.jpg" data-lightbox = "mygallery">
-    <img src="../lib/views/images/coke.jpg" alt="" class="mainimg3" id="">
-    </a>
-
-  </div>
-
-  <div class= "desc_activity1">
-
-      <section>
-        <ul id="choice">
-          <li><img src="../lib/views/images/green2.png" alt="Academic integrity and Plagiarism clipart" class="rounded">
-            <input name="radio" type="radio" id="toggle">
-              <label for="toggle">&nbsp&nbsp&nbsp Recycle</label>
-                <dialog class="correct">
-                  <p>Correct! This item belongs to to recycling!</p>
-
-                <a href="/quiz2"><label>Next Question</label></a>
-            </dialog>
-          </li>
-
-          <li><img id= "toggle2img" src="../lib/views/images/red.png" alt="Academic integrity and Plagiarism clipart" class="rounded">
-            <input name="radio" type="radio" id="toggle2">
-              <label for="toggle2">&nbsp&nbsp&nbsp General</label>
-                <dialog class="incorrect">
-                  <p>Not quite, take a closer look at the image</p>
-
-
-            </dialog>
-
-
-          </li>
-          <li><img src="../lib/views/images/yellow.png" alt="Academic integrity and Plagiarism clipart" class="rounded">
-            <input name="radio" type="radio" id="toggle3">
-              <label for="toggle3">&nbsp&nbspComingled</label>
-                <dialog class="incorrect">
-                  <p>Not quite, take a closer look at the image</p>
-            </dialog>
-
-          </li>
-        </ul>
-
-
-              </section>
-
-      </div>
-    </div>
+</script>

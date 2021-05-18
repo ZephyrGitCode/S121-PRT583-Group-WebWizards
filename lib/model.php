@@ -473,3 +473,23 @@ function addbin($bcolour,$bnum,$btype,$lat,$lng){
    }
 
 }
+function updatescore($score,$id){
+   try{
+      $db = get_db();
+      $query = "UPDATE score, user SET score.score = score.score + ? WHERE user.fname = score.Username AND score.month = MONTHNAME(CURRENT_TIMESTAMP ()) AND score.year = YEAR(CURRENT_TIMESTAMP()) AND user.userNo = ?";
+
+      if($statement = $db->prepare($query)){
+         $binding = array($score, $id);
+         if(!$statement -> execute($binding)){
+                 throw new Exception("Could not execute query.");
+         }
+      }
+      else{
+            throw new Exception("Could not prepare statement.");
+      }
+
+   }
+   catch(Exception $e){
+      throw new Exception($e->getMessage());
+   }
+}
