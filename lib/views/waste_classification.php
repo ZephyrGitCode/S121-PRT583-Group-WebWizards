@@ -40,11 +40,21 @@ if (isset($_POST["submit"])) {
 
   if($rows = $sth->fetchall()){
     foreach($rows as $row){
-      echo "
-        <div class='info_card' style='background-color:purple;'>
-          <h3>$row->item belongs in $row->bintype</h3>
+      echo "<div class='info_card' style='background-color:purple;'>";
+        if($row->bintype == "Paper & Cardboard Recycling"){
+          echo"<h3><img src='lib/views/images/recyclebin1.jpg'/> <img src='lib/views/images/recyclebin2.jpg'/></br>$row->item belongs in $row->bintype</h3>
           </div>";
-  }
+  }elseif($row->bintype == "General Waste"){
+      echo"<h3><img src='lib/views/images/generalbin1.jpg'/> <img src='lib/views/images/generalbin2.jpg'/></br>$row->item belongs in $row->bintype</h3>
+      </div>";
+  }elseif($row->bintype == "Co-mingle Recycling"){
+    echo"<h3><img src='lib/views/images/co-minglebin1.jpg'/> <img src='lib/views/images/co-minglebin2.jpg'/></br>$row->item belongs in $row->bintype</h3>
+    </div>";
+}else{
+        echo "<h3>$row->item belongs in $row->bintype</h3>
+          </div>";
+}
+}
     
 	}else{
     echo "
