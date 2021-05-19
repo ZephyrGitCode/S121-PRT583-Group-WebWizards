@@ -80,6 +80,24 @@ function sign_up($fname, $lname, $email, $studentnum, $password, $password_confi
       throw new Exception($e->getMessage());
    }
 }
+function scoredata($fname, $score){
+   try{
+      $db = get_db();
+      $query = "INSERT INTO score (Username,score, month, year) VALUES (?,?, MONTHNAME(CURRENT_TIMESTAMP()), YEAR(CURRENT_TIMESTAMP()))";
+      if($statement = $db->prepare($query)){
+        $binding = array($fname,$score);
+        if(!$statement -> execute($binding)){
+           throw new Exception("Could not execute query.");
+         }
+      }
+      else{
+         throw new Exception("Could not prepare statement.");
+      }
+   }
+   catch(Exception $e){
+      throw new Exception($e->getMessage());
+   }
+}
 
 function sign_in($useremail,$password){
    try{

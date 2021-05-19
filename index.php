@@ -639,11 +639,13 @@ post("/signup",function($app){
           $email = $app->form('email');
           $pw = $app->form('password');
           $confirm = $app->form('passw-c');
+          $score = 0;
    
           if($fname && $email && $studentnum && $pw && $confirm){
               try{
                 sign_up($fname,$lname,$email,$studentnum,$pw,$confirm);
                 sign_in($email,$pw);
+                scoredata($fname, $score);
                 $app->set_flash("Welcome ".$fname." ".$lname." to CDU WasteAware!"); 
                 $app->redirect_to("/");   
              }
@@ -764,13 +766,23 @@ put("/quiz",function($app){
        if(is_authenticated()){
          $id = get_user_id();
          $score = $app->form('quiz');
+         $fname = get_user_name();
          try{
-            updatescore($score,$id);
-            session_start();
+            if(updatescore($score,$id)){
+               session_start();
             $_SESSION["quiz"] = 1;
             session_write_close();
             $app->set_flash("Score Successfully updated");
             $app->redirect_to("/");
+            }
+            else{
+               scoredata($fname, $score);
+               session_start();
+               $_SESSION["quiz"] = 1;
+               session_write_close();
+               $app->set_flash("Score Successfully updated");
+               $app->redirect_to("/");
+            }
          }
          catch(Exception $e){
             $app->set_flash($e->getMessage());  
