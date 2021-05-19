@@ -1,4 +1,3 @@
-
 <style>
   h2, h3, #test_status, #completion{
     text-align: center;
@@ -25,13 +24,15 @@ height:250px;
 width:100px;
 padding:10px;
 }
-
-    </style>
-
-
-    <h2 id="test_status"></h2>
-    <div id="test"></div>
-    <div id="completion"></div>
+</style>
+<?php
+session_start();
+if ($_SESSION["quiz"] ==1){echo "HEHEHHEHEHEHE";}
+session_write_close();
+?>
+<h2 id="test_status"></h2>
+<div id="test"></div>
+<div id="completion"></div>
 
 <script>
 var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, chE, chF, correct = 0;

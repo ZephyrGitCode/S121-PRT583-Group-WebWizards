@@ -17,8 +17,8 @@ function get_user($id){
    $user = null;
    try{
       $db = get_db();
-      //$query = "SELECT *,SUM(score.score) AS totalscore FROM USER,score WHERE user.fname = score.Username AND user.userNo=?";
-      $query = "SELECT *FROM USER WHERE userNo=?";
+      $query = "SELECT *,SUM(score.score) AS totalscore FROM USER,score WHERE user.fname = score.Username AND user.userNo=?";
+      //$query = "SELECT *FROM USER WHERE userNo=?";
       if($statement = $db->prepare($query)){
          $binding = array($id);
          if(!$statement -> execute($binding)){

@@ -766,6 +766,9 @@ put("/quiz",function($app){
          $score = $app->form('quiz');
          try{
             updatescore($score,$id);
+            session_start();
+            $_SESSION["quiz"] = 1;
+            session_write_close();
             $app->set_flash("Score Successfully updated");
             $app->redirect_to("/");
          }
@@ -832,6 +835,7 @@ put("/map",function($app){
       $cardpapc = $app->form('cardpapc');
       $envc = $app->form('envc');
       try{
+         $app->set_message("user", get_user($id));
          $app->set_message("mapmarkers", mapmarkers());
          $app->set_message("filter", $gwc.",".$comc.",".$cardpapc.",".$envc);
          $app->render(LAYOUT,"map");  

@@ -16,7 +16,7 @@
 
   ?>
 
-<h1 style="text-align:center;"  id= "leaderboard_heading"> <?php echo"Leaderboard - $years"?></h1>
+  <h1 style="text-align:center;"  id= "leaderboard_heading"> <?php echo"Yearly Leaderboard - $years"?></h1>
 
  <select id="btype" name="btype" onchange="location = this.value;" data-placeholder="Select for All-Time or Monthly leaderboard">
     <option value="/alltime_leaderboard">All-Time Leaderboard</option>
