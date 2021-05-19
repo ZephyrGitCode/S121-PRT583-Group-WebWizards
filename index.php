@@ -396,7 +396,7 @@ get("/game/:id;[\d]+",function($app){
       $is_authenticated = is_authenticated();
       if($is_authenticated == True){
          $app->set_message("user", get_user($id));
-         $app->set_message("score", getscore());
+         $app->set_message("score", get_score($id));
          $app->render(LAYOUT,"game".$id);
       }
       else{
@@ -411,9 +411,6 @@ get("/game/:id;[\d]+",function($app){
    $app->set_message("note", "You must be logged in to see your account");
    $app->render(LAYOUT,"/signin");
 });
-
-
-
 
 get("/quiz",function($app){
    require MODEL;
@@ -436,6 +433,7 @@ get("/quiz",function($app){
       $app->render(LAYOUT,"signin");
    } 
 });
+
 get("/quiz2",function($app){
    require MODEL;
    $app->set_message("title","Waste Awareness Quiz");
@@ -457,6 +455,7 @@ get("/quiz2",function($app){
       $app->render(LAYOUT,"signin");
    } 
 });
+
 get("/quiz3",function($app){
    require MODEL;
    $app->set_message("title","Waste Awareness Quiz");

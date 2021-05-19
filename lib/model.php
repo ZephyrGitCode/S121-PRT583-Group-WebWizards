@@ -17,7 +17,7 @@ function get_user($id){
    $user = null;
    try{
       $db = get_db();
-      //$query = "SELECT *,SUM(score.score) AS totalscore FROM USER,score WHERE user.fname = score.Username AND user.userNo=35";
+      //$query = "SELECT *,SUM(score.score) AS totalscore FROM USER,score WHERE user.fname = score.Username AND user.userNo=?";
       $query = "SELECT *FROM USER WHERE userNo=?";
       if($statement = $db->prepare($query)){
          $binding = array($id);
@@ -366,6 +366,23 @@ function get_user_name(){
    return $name;	
 }
 
+function get_score($id){
+   session_start();
+   try{
+     $db = get_db();
+     $query = "SELECT *,SUM(score.score) AS totalscore FROM USER,score WHERE user.fname = score.Username AND user.userNo=?";
+     $statement = $db->prepare($query);
+     $binding = array($id);
+     $statement -> execute($binding);
+     $score = $statement->fetchall(PDO::FETCH_ASSOC);
+     return $score;
+   }
+   catch(PDOException $e){
+     throw new Exception($e->getMessage());
+     return "";
+   }
+}
+
 function yearly_leaderboard(){
    session_start();
    try{
@@ -451,7 +468,6 @@ function wasteclassification(){
    }
 
 }
-
 
 function addbin($bcolour,$bnum,$btype,$lat,$lng){
    try{
