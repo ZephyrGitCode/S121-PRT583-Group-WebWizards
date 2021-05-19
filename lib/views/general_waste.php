@@ -12,7 +12,6 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/home">Home</a></li>
     <li class="breadcrumb-item"><a href="/waste_classification">Waste Classification</a></li>
     <li class="breadcrumb-item active" aria-current="page">General Waste</li>
   </ol>
@@ -43,16 +42,6 @@
             <div class="card" style="background-color:#8B0000;">
             <h3 style="color:white"><img src="lib/views/images/foodscraps.jpg"/>
             Food scraps</h3><p>Fruits, Vegetables, Meat, Bones etc</p>
-            </div>
-
-            <div class="card" style="background-color:#8B0000;">
-            <h3 style="color:white"><img src="lib/views/images/paper-towel.jpg"/>
-            Food scraps</h3><p>Tissues, napkins and paper towels should be disposed in the general bins</p>
-            </div>
-
-            <div class="card" style="background-color:#8B0000;">
-            <h3 style="color:white"><img src="lib/views/images/straw.jpg"/>
-            Food scraps</h3><p>Disposable utensils and straws should be disposed in the general bins</p>
             </div>
 
             <div class="card" style="background-color:#8B0000;">

@@ -338,28 +338,7 @@ get("/activities",function($app){
    } 
 });
 
-get("/game/:id;[\d]+",function($app){
-   $id = $app->route_var("id");
-   $app->set_message("title","Games");
-   require MODEL;
-   try{
-      $is_authenticated = is_authenticated();
-      if($is_authenticated == True){
-         $app->set_message("user", get_user($id));
-         $app->render(LAYOUT,"game".$id);
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"game".$id);
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->render(LAYOUT,"signin");
-   } 
-   $app->set_message("note", "You must be logged in to see your account");
-   $app->render(LAYOUT,"/signin");
-});
+
 
 get("/siteinfo",function($app){
    require MODEL;
@@ -409,6 +388,30 @@ get("/map",function($app){
    } 
 });
 
+get("/game/:id;[\d]+",function($app){
+   $id = $app->route_var("id");
+   $app->set_message("title","Games");
+   require MODEL;
+   try{
+      $is_authenticated = is_authenticated();
+      if($is_authenticated == True){
+         $app->set_message("user", get_user($id));
+         $app->set_message("score", get_score($id));
+         $app->render(LAYOUT,"game".$id);
+      }
+      else{
+         #$app->render(LAYOUT,"signin");
+         $app->render(LAYOUT,"game".$id);
+      }
+   }
+   catch(Exception $e){
+      $app->set_message("message",$e->getMessage($app));
+      $app->render(LAYOUT,"signin");
+   } 
+   $app->set_message("note", "You must be logged in to see your account");
+   $app->render(LAYOUT,"/signin");
+});
+
 get("/quiz",function($app){
    require MODEL;
    $app->set_message("title","Waste Awareness Quiz");
@@ -430,6 +433,7 @@ get("/quiz",function($app){
       $app->render(LAYOUT,"signin");
    } 
 });
+
 get("/quiz2",function($app){
    require MODEL;
    $app->set_message("title","Waste Awareness Quiz");
@@ -451,6 +455,7 @@ get("/quiz2",function($app){
       $app->render(LAYOUT,"signin");
    } 
 });
+
 get("/quiz3",function($app){
    require MODEL;
    $app->set_message("title","Waste Awareness Quiz");
@@ -708,6 +713,61 @@ put("/myaccount/:id[\d]+",function($app){
             update_details($id,$fname,$lname,$email,$studentnum);
             $app->set_flash("Details Successfully updated");
             $app->redirect_to("/");   
+         }
+         catch(Exception $e){
+            $app->set_flash($e->getMessage());  
+            $app->redirect_to("/");          
+         }
+       }
+       else{
+          $app->set_flash("You are not authenticated, please login correctly");  
+          $app->redirect_to("/");           
+       }
+   }
+   catch(Exception $e){
+        $app->set_flash("{$e->getMessage()}");  
+        $app->redirect_to("/");
+   }
+});
+
+put("/game/:id;[\d]+",function($app){
+   $app->set_message("title","Games");
+   require MODEL;
+   try{
+       if(is_authenticated()){
+         $id = get_user_id();
+         $score = $app->form('score');
+         try{
+            updatescore($score,$id);
+            $app->set_flash("Score Successfully updated");
+            $app->redirect_to("/");
+         }
+         catch(Exception $e){
+            $app->set_flash($e->getMessage());  
+            $app->redirect_to("/");          
+         }
+       }
+       else{
+          $app->set_flash("You are not authenticated, please login correctly");  
+          $app->redirect_to("/");           
+       }
+   }
+   catch(Exception $e){
+        $app->set_flash("{$e->getMessage()}");  
+        $app->redirect_to("/");
+   }
+});
+put("/quiz",function($app){
+   $app->set_message("title","Quiz");
+   require MODEL;
+   try{
+       if(is_authenticated()){
+         $id = get_user_id();
+         $score = $app->form('quiz');
+         try{
+            updatescore($score,$id);
+            $app->set_flash("Score Successfully updated");
+            $app->redirect_to("/");
          }
          catch(Exception $e){
             $app->set_flash($e->getMessage());  

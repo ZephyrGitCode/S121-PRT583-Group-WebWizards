@@ -11,7 +11,7 @@
         // if user is not empty
         if(!empty($user) && $user['userNo'] == get_user_id()){
         ?>
-        <p style="text-align: center;">Your Score: <?php echo $user['totalscore'];?></p>
+        <p style="text-align: center;">Your Score: <?php echo $score[0]['totalscore'];?></p>
         <form action='/myaccount/<?php if(!empty($user['userNo']))echo $user['userNo']?>' method='POST'>
             <input type='hidden' name='_method' value='put' />
 

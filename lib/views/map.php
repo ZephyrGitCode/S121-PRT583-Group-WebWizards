@@ -37,12 +37,6 @@ if (EMPTY($filter) == 0){
   <script type="text/javascript" src="../lib/views/css/dropdowns/awselect.js"></script>
 </head>
 
-<style>
-[class^=ckbx-] input[type=checkbox] {
-  position: unset;
-}
-</style>
-
 <!--pop up information end-->
 <div id="map" style="z-index:1;height:400px;color:black;"></div>
 <div class="mapbtns">
@@ -82,7 +76,6 @@ if (EMPTY($filter) == 0){
       <option value="Brown">Brown</option>
     </select>
 
- 
     <select id="bnum" name="bnum" data-placeholder="Select a building number">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -111,12 +104,11 @@ if (EMPTY($filter) == 0){
   <div class="maplegend">
     <form action="/map" method='post'>
       <input type='hidden' name='_method' value='put' />
+      <p style="font-weight: bold;">Map Legend</p>
       <table>
         <tbody>
-          <tr><th></th><th></th><th>Filter</th></tr>
           <tr>
-            <td><img src="../lib/views/images/gw.png" width="40px;" height="40px;"/></td>
-            <td>Red General Waste</td>
+            <td><img src="../lib/views/images/gw.png" width="20px;" height="20px;"/></td>
             <td>
               <div class="ckbx-style-8">
                 <input type="checkbox" id="ckbx-style-8-1" id="toggle" value="gw" name="gwc" <?php if ($gwc){ echo "checked"; }?>>
@@ -125,8 +117,7 @@ if (EMPTY($filter) == 0){
             </td>
           </tr>
           <tr>
-            <td><img src="../lib/views/images/com.png" width="40px;" height="40px;"/></td>
-            <td>Yellow Co-mingled</td>
+            <td><img src="../lib/views/images/com.png" width="20px;" height="20px;"/></td>
             <td>
               <div class="ckbx-style-8">
                 <input type="checkbox" id="ckbx-style-8-2" id="toggle" value="com" name="comc" <?php if ($comc){ echo "checked"; }?>>
@@ -135,8 +126,7 @@ if (EMPTY($filter) == 0){
             </td>
           </tr>
           <tr>
-            <td><img src="../lib/views/images/cardpap.png" width="40px;" height="40px;"/></td>
-            <td>Cardboard And Paper</td>
+            <td><img src="../lib/views/images/cardpap.png" width="20px;" height="20px;"/></td>
             <td>
               <div class="ckbx-style-8">
                 <input type="checkbox" id="ckbx-style-8-3" id="toggle" value="cardpap" name="cardpapc" <?php if ($cardpapc){ echo "checked"; }?>>
@@ -145,8 +135,7 @@ if (EMPTY($filter) == 0){
             </td>
           </tr>
           <tr>
-            <td><img src="../lib/views/images/green2.png" width="40px;" height="40px;"/></td>
-            <td>Enviro-Collective</td>
+            <td><img src="../lib/views/images/green2.png" width="20px;" height="20px;"/></td>
             <td>
               <div class="ckbx-style-8">
                 <input type="checkbox" id="ckbx-style-8-4" id="toggle" value="env" name="envc" <?php if ($envc){ echo "checked"; }?>>
@@ -299,7 +288,9 @@ if(!empty($mapmarkers)){
       var search = filter.search(type);
       var check1 = "<?php echo $gwc ?>";
       var check2 = "<?php echo $comc ?>";
-      if (search >= 0 || (check1 == true || check2==true && type=="gwcom")){
+      var check3 = false
+      if (check1==false && check2==false){check3 = false}else{check3 = true}
+      if (search >= 0 || (check3==true && type=="gwcom")){
         if (lat != ""){
         var loc = new L.LatLng(lat, long);
         switch(type)
