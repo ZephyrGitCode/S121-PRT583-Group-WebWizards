@@ -40,15 +40,15 @@ if (isset($_POST["submit"])) {
 
   if($rows = $sth->fetchall()){
     foreach($rows as $row){
-      echo "<div class='info_card' style='background-color:purple;'>";
+      echo "<div class='info_card'";
         if($row->bintype == "Paper & Cardboard Recycling"){
-          echo"<h3><img src='lib/views/images/recyclebin1.jpg'/> <img src='lib/views/images/recyclebin2.jpg'/></br>$row->item belongs in $row->bintype</h3>
+          echo"<h3>$row->item belongs in $row->bintype<br/><img src='lib/views/images/recyclebin1.jpg' height='70px' width='70px'/> <img src='lib/views/images/recyclebin2.jpg' height='70px' width='70px'/></h3>
           </div>";
   }elseif($row->bintype == "General Waste"){
-      echo"<h3><img src='lib/views/images/generalbin1.jpg'/> <img src='lib/views/images/generalbin2.jpg'/></br>$row->item belongs in $row->bintype</h3>
+      echo"<h3>$row->item belongs in $row->bintype<br/><img src='lib/views/images/generalbin1.jpg' height='70px' width='70px'/> <img src='lib/views/images/generalbin2.jpg' height='70px' width='70px'/></h3>
       </div>";
   }elseif($row->bintype == "Co-mingle Recycling"){
-    echo"<h3><img src='lib/views/images/co-minglebin1.jpg'/> <img src='lib/views/images/co-minglebin2.jpg'/></br>$row->item belongs in $row->bintype</h3>
+    echo"<h3>$row->item belongs in $row->bintype<br/><img src='lib/views/images/co-minglebin1.jpg' height='70px' width='70px'/> <img src='lib/views/images/co-minglebin2.jpg' height='70px' width='70px'/></h3>
     </div>";
 }else{
         echo "<h3>$row->item belongs in $row->bintype</h3>
