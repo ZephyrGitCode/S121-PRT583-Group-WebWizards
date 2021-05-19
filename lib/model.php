@@ -17,8 +17,8 @@ function get_user($id){
    $user = null;
    try{
       $db = get_db();
-      //$query = "SELECT *,SUM(score.score) AS totalscore FROM USER,score WHERE user.fname = score.Username AND user.userNo=?";
-      $query = "SELECT *FROM USER WHERE userNo=?";
+      $query = "SELECT *,SUM(score.score) AS totalscore FROM USER,score WHERE user.fname = score.Username AND user.userNo=?";
+      //$query = "SELECT *FROM USER WHERE userNo=?";
       if($statement = $db->prepare($query)){
          $binding = array($id);
          if(!$statement -> execute($binding)){
@@ -68,6 +68,24 @@ function sign_up($fname, $lname, $email, $studentnum, $password, $password_confi
       $query = "INSERT INTO user (fname,lname,email,studentnum,salt,hashed_password) VALUES (?,?,?,?,?,?)";
       if($statement = $db->prepare($query)){
         $binding = array($fname,$lname,$email,$studentnum,$salt,$password_hash);
+        if(!$statement -> execute($binding)){
+           throw new Exception("Could not execute query.");
+         }
+      }
+      else{
+         throw new Exception("Could not prepare statement.");
+      }
+   }
+   catch(Exception $e){
+      throw new Exception($e->getMessage());
+   }
+}
+function scoredata($fname, $score){
+   try{
+      $db = get_db();
+      $query = "INSERT INTO score (Username,score, month, year) VALUES (?,?, MONTHNAME(CURRENT_TIMESTAMP()), YEAR(CURRENT_TIMESTAMP()))";
+      if($statement = $db->prepare($query)){
+        $binding = array($fname,$score);
         if(!$statement -> execute($binding)){
            throw new Exception("Could not execute query.");
          }

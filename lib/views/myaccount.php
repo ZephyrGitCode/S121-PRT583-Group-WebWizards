@@ -11,7 +11,8 @@
         // if user is not empty
         if(!empty($user) && $user['userNo'] == get_user_id()){
         ?>
-        <p style="text-align: center;">Your Score: <?php echo $score[0]['totalscore'];?></p>
+        <p style="text-align: center;">Hey <?php echo $user['fname']?> | Your Score: <?php echo $user['totalscore'];?></p>
+
         <form action='/myaccount/<?php if(!empty($user['userNo']))echo $user['userNo']?>' method='POST'>
             <input type='hidden' name='_method' value='put' />
 
@@ -22,21 +23,9 @@
                 <p id="emailtext"></p>
             </div>
 
-            <p class="acctext">First Name:</p>
-            <div class="inputBox">
-                <input type="text" id="fname" name="fname" value="<?php echo $user['fname']?>">
-                <span><i class="fa fa-user fa-icon" aria-hidden="true"></i></span>
-            </div>
-
-            <p class="acctext">Last Name:</p>
-            <div class="inputBox">
-                <input type="text" id="lname" name="lname" value="<?php echo $user['lname']?>">
-                <span><i class="fa fa-user fa-icon" aria-hidden="true"></i></span>
-            </div>
-
             <p class="acctext">Student Number:</p>
             <div class="inputBox">
-                <input type="text" id="studentnum" name="studentnum" value="<?php echo $user['studentnum']?>" pattern="^s[0-9]*$" title="format: s123456" maxlength="7">
+                <input type="text" id="studentnum" name="studentnum" value="<?php echo $user['studentnum']?>" pattern="^[sS][0-9]*$" title="format: s123456" maxlength="7">
                 <span><i class="fa fa-user fa-icon" aria-hidden="true"></i></span>
             </div>
 

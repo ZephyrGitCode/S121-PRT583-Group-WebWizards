@@ -66,14 +66,14 @@ if (EMPTY($filter) == 0){
     </select>
     
     <select id="bcolour" name="bcolour" data-placeholder="Select a building colour">
-      <option value="Red">Red</option>
-      <option value="Orange">Orange</option>
-      <option value="Green">Green</option>
       <option value="Blue">Blue</option>
-      <option value="Yellow">Yellow</option>
+      <option value="Brown">Brown</option>
+      <option value="Green">Green</option>
+      <option value="Orange">Orange</option>
       <option value="Pink">Pink</option>
       <option value="Purple">Purple</option>
-      <option value="Brown">Brown</option>
+      <option value="Red">Red</option>
+      <option value="Yellow">Yellow</option>
     </select>
 
     <select id="bnum" name="bnum" data-placeholder="Select a building number">
@@ -203,9 +203,10 @@ function addMarker(latlng, msg="",icon = "") {
   return marker;
 }
 
-function moveMarker(marker, lat, lng) {
-  var newLatLng = new L.LatLng(lat, lng);
-  marker.setLatLng(newLatLng);
+function moveMarker(marker, latlng) {
+  //var newLatLng = new L.LatLng(lat, lng);
+  marker.setLatLng(latlng);
+  
   return marker;
 }
 
@@ -215,11 +216,14 @@ function locateUser() {
   });
 }
 
+var clickmarker = new L.Marker(new L.LatLng(-13.37206, 130.86938));
+clickmarker.addTo(map);
+
 function onMapClick(e) {
   var msg = "Recently Clicked "+e.latlng.toString();
   alert(msg);
   try {
-    addMarker(e.latlng,msg);
+    moveMarker(clickmarker,e.latlng);
     sessionStorage.setItem("binloc",e.latlng.toString());
     document.getElementById("latValue").value = e.latlng.lat;
     document.getElementById("lngValue").value = e.latlng.lng;
@@ -236,7 +240,6 @@ if(!empty($user) && $user['isadmin'] == 1){
 <?php
 }
 ?>
-
 
 function addBin(){
   var latlng = sessionStorage.getItem("binloc");
@@ -286,11 +289,7 @@ if(!empty($mapmarkers)){
       var type = "<?php echo $type ?>";
       var filter = "<?php echo $filter ?>";
       var search = filter.search(type);
-      var check1 = "<?php echo $gwc ?>";
-      var check2 = "<?php echo $comc ?>";
-      var check3 = false
-      if (check1==false && check2==false){check3 = false}else{check3 = true}
-      if (search >= 0 || (check3==true && type=="gwcom")){
+      if (search >= 0){
         if (lat != ""){
         var loc = new L.LatLng(lat, long);
         switch(type)

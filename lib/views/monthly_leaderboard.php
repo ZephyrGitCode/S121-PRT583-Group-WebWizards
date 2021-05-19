@@ -14,10 +14,8 @@
   $month = htmlspecialchars($blah['month'],ENT_QUOTES, 'UTF-8');
   $years = htmlspecialchars($blah['year'],ENT_QUOTES, 'UTF-8');
   }
-
   ?>
-
-  <h1 style="text-align:center;"  id= "leaderboard_heading"> <?php echo"Leaderboard </br>$month - $years"?></h1>
+<h1 style="text-align:center;"  id= "leaderboard_heading"> <?php echo"Monthly Leaderboard </br> $month- $years"?></h1>
 
  <select id="btype" name="btype" onchange="location = this.value;" data-placeholder="Select for All-Time or Yearly leaderboard">
     <option value="/alltime_leaderboard">All-Time Leaderboard</option>
@@ -35,7 +33,7 @@ $con = get_db();
 
 if (isset($_POST["submit"])) {
 	$str = $_POST["search"];
-	$sth = $con->prepare("SELECT *,SUM(score.score)AS totalscore FROM USER,score WHERE user.fname=score.Username AND score.month = MONTHNAME(CURRENT_TIMESTAMP()) And user.fname LIKE'%$str%'");
+	$sth = $con->prepare("SELECT *,SUM(score.score)AS totalscore FROM USER,score WHERE user.fname=score.Username AND score.month = MONTHNAME(CURRENT_TIMESTAMP()) And user.fname LIKE'%$str%' GROUP BY fname");
 
 	$sth->setFetchMode(PDO:: FETCH_OBJ);
 	$sth -> execute();
@@ -43,12 +41,19 @@ if (isset($_POST["submit"])) {
 	if($rows = $sth->fetchall())
 	{foreach($rows as $row){
 
-    echo "
-       <div class='info_card' style='background-color:purple;'>
-         <h3>$row->fname&nbsp;$row->lname</h3>
-         <h4>Points: $row->totalscore</h4>
-         </div>
-    ";}
+    echo "<table><tbody>";
+    echo "<td class ='rank'></td>
+        <td><svg width='1.2em' height='1.2em' viewBox='0 0 16 16' class='bi bi-trophy-fill' fill='black' xmlns='http://www.w3.org/2000/svg'>
+          <path fill-rule='evenodd' d='M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z'/>
+        </svg>
+        </td>
+          <td>$row->fname</td>
+          <td class = 'score'>
+          <svg width='1em' height='1em' viewBox='0 0 16 16' class='bi bi-gem' fill='#007a87' xmlns='http://www.w3.org/2000/svg'>
+      <path fill-rule='evenodd' d='M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495l5.062-.005L8 13.366 5.47 5.495zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l2.92-.003 2.193 6.82L1.5 5.5zm7.889 6.817l2.194-6.828 2.929-.003-5.123 6.831z'/>
+          </svg>
+          $row->totalscore pts</td>
+        </tr>";}echo "</table>";
 	}else{
     echo "
     <div class='info_card' style='background-color:red;'>
@@ -61,6 +66,7 @@ if (isset($_POST["submit"])) {
 }
 
 //Print the list of account details
+if (!isset($_POST["submit"])) {
 if(!empty($list)){
   echo "<table><tbody>";
 
@@ -137,7 +143,7 @@ if(!empty($list)){
   }
   }
   echo "</table>";
-}
+}}
 
 
 
