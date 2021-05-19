@@ -17,7 +17,7 @@ height:250px;
 }
 
 #test{
-  text align:center;
+  text-align:center;
   display:grid;
   grid-template-columns:auto auto auto;
 }
@@ -112,10 +112,10 @@ function renderQuestion(){
   get("test_status").innerHTML += "<img class='mainimg3'  src="+question+">";
   // display the answer options
   // the += appends to the data we started on the line above
-  test.innerHTML = "<label><input id='toggle' type='radio' name='choices' value='A'>&nbsp&nbsp<img src="+chB+ " id ='green' name='choices' value='A'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+chA+"</label>";
-  test.innerHTML += "<label><input id='toggle' type='radio' name='choices' value='B'>&nbsp&nbsp<img src="+chD+ " id ='green' name='choices' value='B'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+chC+"</label>";
-  test.innerHTML += "<label><input id='toggle' type='radio' name='choices' value='C'>&nbsp&nbsp<img src="+chF+ " id ='green' name='choices' value='C'/>&nbsp&nbsp"+chE+"</label>";
-  test.innerHTML += "<button style='color:black' onclick='checkAnswer()'>Submit Answer</button>";
+  test.innerHTML = "<label><input id='toggle' type='radio' name='choices' value='A'>&nbsp&nbsp<img src="+chB+" id ='green' name='choices' value='A'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+chA+"</label>";
+  test.innerHTML += "<label><input id='toggle' type='radio' name='choices' value='B'>&nbsp&nbsp<img src="+chD+" id ='green' name='choices' value='B'/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"+chC+"</label>";
+  test.innerHTML += "<label><input id='toggle' type='radio' name='choices' value='C'>&nbsp&nbsp<img src="+chF+" id ='green' name='choices' value='C'/>&nbsp&nbsp"+chE+"</label>";
+  test.innerHTML += "<br\><div style=''><button class='btn btn-primary' style='background:#007a87;color:white;' onclick='checkAnswer()'><span style='font-size: 14px;'>Submit Answer</span></button></div>";
 }
 function checkAnswer(){
   // use getElementsByName because we have an array which it will loop through

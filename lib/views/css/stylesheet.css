@@ -329,14 +329,14 @@ body{background-color:#232d35;color:#ffffff;font-weight: 400;margin: 0;line-heig
 /*from standard.css */
 input{
     background: #313131;
-    border: 2px solid #1F1F1F;
+    border: 2px solid #007a87;;
     border-radius: 3px;
     color: #ddd;
   }
   
   textarea{
     background: #313131;
-    border: 2px solid #1F1F1F;
+    border: 2px solid #007a87;;
     border-radius: 3px;
     color: #ddd;
   }
@@ -558,13 +558,34 @@ td, th {
 .maplegend {
   text-align: left;
   margin-top: 10px;
+  position: absolute;
+  top: 95px;
+  right: 26px;
+  z-index: 1;
+  font-size: 10px;
+  color: #000;
+  margin: auto;
+  background: rgba(255, 255, 229, 0.40);
+  border-radius: 20px;
+}
+
+.maplegend form{
+  margin: 0 0 0 2px;
+  padding: 0 8px 5px 8px;
+}
+
+.maplegend td, th {
+  padding: 2px;
+  min-width: unset;
+  height: unset;
 }
 
 .mapsubmit {
-  background: #15a597;
-  width: 60%;
+  background: #007a87;
+  width: 70%;
+  font-size: 10px;
   margin: auto;
-  color: #232d35;
+  color: white;
 }
 /* map end */
 
