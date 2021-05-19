@@ -289,11 +289,7 @@ if(!empty($mapmarkers)){
       var type = "<?php echo $type ?>";
       var filter = "<?php echo $filter ?>";
       var search = filter.search(type);
-      var check1 = "<?php echo $gwc ?>";
-      var check2 = "<?php echo $comc ?>";
-      var check3 = false
-      if (check1==false && check2==false){check3 = false}else{check3 = true}
-      if (search >= 0 || (check3==true && type=="gwcom")){
+      if (search >= 0){
         if (lat != ""){
         var loc = new L.LatLng(lat, long);
         switch(type)
