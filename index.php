@@ -434,49 +434,7 @@ get("/quiz",function($app){
    } 
 });
 
-get("/quiz2",function($app){
-   require MODEL;
-   $app->set_message("title","Waste Awareness Quiz");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"quiz2");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"quiz2");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->render(LAYOUT,"signin");
-   } 
-});
 
-get("/quiz3",function($app){
-   require MODEL;
-   $app->set_message("title","Waste Awareness Quiz");
-   session_start();
-   $email = $_SESSION["email"];
-   session_write_close();
-   try{
-      $is_authenticated = is_authenticated();
-      if($is_authenticated == True){
-         $app->render(LAYOUT,"quiz3");
-      }
-      else{
-         #$app->render(LAYOUT,"signin");
-         $app->render(LAYOUT,"quiz3");
-      }
-   }
-   catch(Exception $e){
-      $app->set_message("message",$e->getMessage($app));
-      $app->render(LAYOUT,"signin");
-   } 
-});
 
 // End get ----------------------------------------
 // Start Post -------------------------------------
@@ -740,9 +698,14 @@ put("/game/:id;[\d]+",function($app){
          $id = get_user_id();
          $score = $app->form('score');
          try{
-            updatescore($score,$id);
-            $app->set_flash("Score Successfully updated");
-            $app->redirect_to("/");
+            if(isinscore() == 1){
+               updatescore($score,$id);
+               $app->set_flash("Score Successfully updated");
+               $app->redirect_to("/");}
+            else{
+               scoredata($fname, $score);
+               $app->set_flash("Score Successfully updated");
+               $app->redirect_to("/");}
          }
          catch(Exception $e){
             $app->set_flash($e->getMessage());  
@@ -768,8 +731,9 @@ put("/quiz",function($app){
          $score = $app->form('quiz');
          $fname = get_user_name();
          try{
-            if(updatescore($score,$id)){
-               session_start();
+         if(isinscore() == 1){
+            updatescore($score,$id);
+            session_start();
             $_SESSION["quiz"] = 1;
             session_write_close();
             $app->set_flash("Score Successfully updated");
