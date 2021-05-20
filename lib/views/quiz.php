@@ -3,7 +3,7 @@
     text-align: center;
     padding:10px;
   }
-  h2{
+  #test_status{
     margin-top:-20px;
   }
 #green{
@@ -27,13 +27,12 @@ padding:10px;
 </style>
 <?php
 session_start();
-if ($_SESSION["quiz"] ==1){echo "HEHEHHEHEHEHE";}
-session_write_close();
-?>
+if ($_SESSION["quiz"] ==1){echo "<h2>You have exceeded the limit of times you can take the quiz. </br> </br> Please return back tomorrow to take it again</h2>";}
+else{?>
 <h2 id="test_status"></h2>
 <div id="test"></div>
 <div id="completion"></div>
-
+<?php } session_write_close(); ?>
 <script>
 var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, chE, chF, correct = 0;
 // this is a multidimensional array with 4 inner array elements with 5 elements inside them
