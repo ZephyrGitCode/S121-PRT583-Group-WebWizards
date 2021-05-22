@@ -527,3 +527,22 @@ function updatescore($score,$id){
       throw new Exception($e->getMessage());
    }
 }
+function isinscore(){
+   try{
+      $db = get_db();
+      $name = get_user_name();
+      $query = "SELECT * FROM score WHERE Username = ? and month = MONTHNAME(CURRENT_TIMESTAMP ()) and year = YEAR(CURRENT_TIMESTAMP())";
+      $statement = $db->prepare($query);
+      $binding = array($name);
+      $statement -> execute($binding);
+      $score = $statement->fetchall(PDO::FETCH_ASSOC);
+      if(empty($score)){
+         return 0;
+      }else{
+         return 1;
+      }
+}catch(PDOException $e){
+   throw new Exception($e->getMessage());
+   return "";
+ }
+}
