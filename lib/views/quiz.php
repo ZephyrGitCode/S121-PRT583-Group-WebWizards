@@ -27,7 +27,7 @@ padding:10px;
 </style>
 <?php
 session_start();
-if ($_SESSION["quiz"] ==1){echo "<h2>You have exceeded the limit of times you can take the quiz. </br> </br> Please return back tomorrow to take it again</h2>";}
+if ($_SESSION["quiz"] >=1){echo "<h2>You have exceeded the limit of times you can take the quiz. </br> </br> Please return back tomorrow to take it again</h2>";}
 else{?>
 <h2 id="test_status"></h2>
 <div id="test"></div>
@@ -89,9 +89,9 @@ function renderQuestion(){
     test.innerHTML = "<h3>You got "+correct+" of "+questions.length+" questions correct</h3>";
     get("test_status").innerHTML = "</h2>Test completed</h2>";
     if(correct < questions.length){
-      get("completion").innerHTML ="<p>You earned "+correct+" points </br> Have a look at the Waste classfication to improve your knowledge on waste disposal</p><form action='/quiz' method='POST'><input type='hidden' name='_method' value='put' /><input type='hidden' name='quiz' value="+correct+"><input type='submit' value='Click to add points to leaderboard'></form>"
+      get("completion").innerHTML ="<p>You earned "+correct+" points </br> Have a look at the Waste classfication to improve your knowledge on waste disposal</p><form action='/quiz' method='POST'><input type='hidden' name='_method' value='put' /><input type='hidden' name='quiz' value="+correct+"><input type='submit' style='font-size: 14px;' value='Click to add points to leaderboard'></form>"
     }else{
-      get("completion").innerHTML ="<p>You earned "+correct+" points</p><form action='/quiz' method='POST'><input type='hidden' name='_method' value='put' /><input type='hidden' name='quiz' value="+correct+"><input type='submit' value='Click to add points to leaderboard'></form>"
+      get("completion").innerHTML ="<p>You earned "+correct+" points</p><form action='/quiz' method='POST'><input type='hidden' name='_method' value='put' /><input type='hidden' name='quiz' value="+correct+"><input type='submit' style='font-size: 14px;' value='Click to add points to leaderboard'></form>"
     }
     // resets the variable to allow users to restart the test
     pos = 0;
