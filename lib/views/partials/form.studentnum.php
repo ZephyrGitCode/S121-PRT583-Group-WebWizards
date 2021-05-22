@@ -1,0 +1,2 @@
+<label for='studentnum'>Student Number* <span id = "subtext">e.g. s312345</span></label>
+ <input type='text' id='studentnum' name='studentnum' pattern="^s[0-9]*$" title="format: s123456" maxlength="7"/>
