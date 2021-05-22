@@ -9,6 +9,12 @@
     height: 150px;
     text-align: center;
 }
+
+#specialimg{
+  width:200px;
+  height: 150px;
+}
+
 .card h2{
     display: grid;
     grid-template-columns: auto auto;
@@ -98,7 +104,7 @@ if (isset($_POST["submit"])) {
             </div>
 
             <div class="card" style="background-color:	#FF6347;">
-              <a style="color:white" href="/specialisedwaste">
+              <a style="color:white" href="/specialisedwaste"><h2><img id="specialimg" src="lib/views/images/specialized.jpg"/></h2>
               <p>Specialised Waste</p></a>
             </div>
 

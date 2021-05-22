@@ -60,7 +60,6 @@ if (EMPTY($filter) == 0){
     <select id="btype" name="btype" data-placeholder="Select a bin Type">
       <option value="gw">General Waste</option>
       <option value="com">Co-mingled</option>
-      <option value="gwcom">General Waste + Co-mingled</option>
       <option value="cardpap">Cardboard And Paper</option>
       <option value="env">Enviro-Collective</option>
     </select>
@@ -93,6 +92,8 @@ if (EMPTY($filter) == 0){
       <option value="14">14</option>
       <option value="15">15</option>
       <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
     </select>
     <br/>
     <input type="submit" class="mapsubmit" name="submit" value="Add Single Bin">

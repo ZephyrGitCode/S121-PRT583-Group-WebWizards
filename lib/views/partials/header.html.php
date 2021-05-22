@@ -7,7 +7,7 @@ if ($_SESSION['userno'] != ""){$userno = $_SESSION['userno'];}?>
 }
 </style>
 <header class="navbar">
-  <a href="/"><span><img src="lib/views/images/cdulogo.png" width="50px" height="50px"></span></a>
+  <a href="/"><span><img src="../lib/views/images/cdulogo.png" width="50px" height="50px"></span></a>
   <!--
   <a href="#mapPopUp"><img width="40px" height="40px" src="../lib/views/images/popupinforicon.png"></a>
   <div id="mapPopUp" class="mapPopUpOverlay">
